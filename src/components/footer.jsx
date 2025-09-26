@@ -109,26 +109,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Newsletter Subscription */}
-        <div className="mt-12 pt-8 border-t border-blue-800/50">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="font-heading font-semibold text-lg mb-2 text-white">Stay Updated</h3>
-              <p className="text-blue-200 text-sm">Get the latest tips and offers directly to your inbox</p>
-            </div>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 rounded-lg bg-blue-800/30 border border-blue-700/50 text-white placeholder-blue-300 focus:outline-none focus:border-blue-500 text-sm"
-              />
-              <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-lg text-sm font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-md">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-
         {/* Bottom Bar */}
         <div className="border-t border-blue-800/50 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-blue-300 text-sm">© 2024 TrustTuition. All rights reserved.</p>

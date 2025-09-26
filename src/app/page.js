@@ -25,6 +25,7 @@ import {
   Shield,
   Zap,
   Heart,
+  HeartIcon,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -123,21 +124,25 @@ export default function Home() {
         <div className="absolute inset-0 bg-grid-blue-100/50 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-left">
-              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+            {/* Text Content */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 mx-auto lg:mx-0">
                 <Zap className="h-4 w-4" />
                 One-to-One Online Tutoring
               </div>
+
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl mb-6 text-balance leading-tight">
                 Expert Tutors from{" "}
                 <span className="text-primary">£20/hour</span>
               </h1>
+
               <p className="text-lg md:text-xl text-muted-foreground mb-8 text-balance leading-relaxed">
                 Connect with qualified tutors for personalized learning. No
                 contracts, no hidden fees. Just quality education tailored to
                 you.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 items-start">
+
+              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
                 <Link href="/quick-quote">
                   <Button
                     size="lg"
@@ -160,6 +165,7 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Image Section */}
             <div className="relative">
               <Image
                 src="/hero-img.jpg"
@@ -190,8 +196,8 @@ export default function Home() {
               <span className="font-semibold">24/7 Support</span>
             </div>
             <div className="flex items-center justify-center gap-3">
-              <Heart className="h-6 w-6 text-primary" />
-              <span className="font-semibold">Satisfaction Guarantee</span>
+              <HeartIcon className="h-6 w-6 text-primary" />
+              <span className="font-semibold">Satisfaction </span>
             </div>
             <div className="flex items-center justify-center gap-3">
               <CheckCircle className="h-6 w-6 text-primary" />

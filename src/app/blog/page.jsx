@@ -98,60 +98,6 @@ export default function BlogPage() {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Categories Filter */}
-        <div className="flex flex-wrap gap-2 mb-8 justify-center">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={category === "All" ? "default" : "outline"}
-              size="sm"
-              className={category === "All" ? "" : ""}
-            >
-              {category}
-            </Button>
-          ))}
-        </div>
-
-        {/* Featured Post */}
-        <div className="mb-12">
-          <h2 className="font-heading font-bold text-2xl mb-6">Featured Article</h2>
-          <Card className="overflow-hidden hover:shadow-lg transition-shadow border-0 shadow-lg">
-            <div className="md:flex">
-              <div className="md:w-1/2">
-                <div className="w-full h-64 md:h-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-white">
-                  <BookOpen className="h-16 w-16 opacity-50" />
-                </div>
-              </div>
-              <div className="md:w-1/2 p-8">
-                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                  <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
-                    {featuredPost.category}
-                  </span>
-                  <div className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4" />
-                    <span>{featuredPost.date}</span>
-                  </div>
-                  <span>{featuredPost.readTime}</span>
-                </div>
-                <h3 className="font-heading font-bold text-2xl mb-4">{featuredPost.title}</h3>
-                <p className="text-muted-foreground leading-relaxed mb-6">{featuredPost.excerpt}</p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <User className="h-4 w-4" />
-                    <span>{featuredPost.author}</span>
-                  </div>
-                  <Link href={`/blog/${featuredPost.id}`}>
-                    <Button>
-                      Read More
-                      <ArrowRight className="h-4 w-4 ml-2" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </div>
-
         {/* Regular Posts Grid */}
         <div>
           <h2 className="font-heading font-bold text-2xl mb-6">Latest Articles</h2>
