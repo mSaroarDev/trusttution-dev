@@ -1,27 +1,28 @@
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, Target, Award, Heart } from "lucide-react"
+import { Users, Target, Award, Heart, Star, CheckCircle } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default function AboutPage() {
   const values = [
     {
-      icon: <Target className="h-8 w-8 text-yellow-600" />,
+      icon: <Target className="h-8 w-8" />,
       title: "Excellence",
       description: "We maintain the highest standards in tutor selection and student support.",
     },
     {
-      icon: <Heart className="h-8 w-8 text-yellow-600" />,
+      icon: <Heart className="h-8 w-8" />,
       title: "Passion",
       description: "We're passionate about education and helping students achieve their potential.",
     },
     {
-      icon: <Users className="h-8 w-8 text-yellow-600" />,
+      icon: <Users className="h-8 w-8" />,
       title: "Community",
       description: "We build lasting relationships between students, tutors, and families.",
     },
     {
-      icon: <Award className="h-8 w-8 text-yellow-600" />,
+      icon: <Award className="h-8 w-8" />,
       title: "Quality",
       description: "Every tutor is carefully vetted and committed to delivering exceptional results.",
     },
@@ -60,11 +61,11 @@ export default function AboutPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="bg-slate-900 text-white py-20">
+      <section className="bg-gradient-to-br from-blue-50 via-slate-50 to-blue-100 py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading font-bold text-4xl md:text-6xl mb-6">About TrustTuition</h1>
-          <p className="text-xl text-gray-300 mb-8 text-balance leading-relaxed">
-            We're on a mission to make quality education accessible to everyone through personalized, affordable online
+          <p className="text-xl text-muted-foreground mb-8 text-balance leading-relaxed">
+            We're on a mission to make quality education accessible to everyone through personalised, affordable online
             tutoring.
           </p>
         </div>
@@ -75,18 +76,18 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Our Mission</h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              At TrustTuition, we believe that every student deserves access to high-quality, personalized education.
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              At TrustTuition, we believe that every student deserves access to high-quality, personalised education.
               Our platform connects learners with expert tutors who are passionate about teaching and committed to
               helping students achieve their academic goals.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border-l-4 border-l-yellow-400">
+            <Card className="border-l-4 border-l-primary">
               <CardContent className="p-6">
                 <h3 className="font-heading font-semibold text-xl mb-3">What We Do</h3>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   We provide a trusted platform where students can find qualified tutors for one-on-one online learning
                   sessions. From GCSE to A-Level and beyond, we cover all major subjects with experienced educators who
                   understand how to make learning engaging and effective.
@@ -94,10 +95,10 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card className="border-l-4 border-l-yellow-400">
+            <Card className="border-l-4 border-l-primary">
               <CardContent className="p-6">
                 <h3 className="font-heading font-semibold text-xl mb-3">Why We're Different</h3>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   Unlike traditional tutoring agencies, we believe in transparency and flexibility. No contracts, no
                   hidden fees, just honest pricing and quality education. We carefully vet every tutor and provide
                   ongoing support to ensure the best possible learning experience.
@@ -113,14 +114,14 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-3xl mb-4">Our Impact</h2>
-            <p className="text-lg text-gray-600">The numbers speak for themselves</p>
+            <p className="text-lg text-muted-foreground">The numbers speak for themselves</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-yellow-600 mb-2">{stat.number}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.number}</div>
+                <div className="text-muted-foreground font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -132,18 +133,18 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-3xl mb-4">Our Values</h2>
-            <p className="text-lg text-gray-600">The principles that guide everything we do</p>
+            <p className="text-lg text-muted-foreground">The principles that guide everything we do</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow border-0 shadow-md">
                 <CardHeader>
-                  <div className="mx-auto mb-4 p-3 bg-yellow-100 rounded-full w-fit">{value.icon}</div>
+                  <div className="mx-auto mb-4 p-3 bg-primary/10 text-primary rounded-full w-fit">{value.icon}</div>
                   <CardTitle className="font-heading text-xl">{value.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                  <p className="text-muted-foreground leading-relaxed">{value.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -156,23 +157,21 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-3xl mb-4">Meet Our Team</h2>
-            <p className="text-lg text-gray-600">The people behind TrustTuition</p>
+            <p className="text-lg text-muted-foreground">The people behind TrustTuition</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {team.map((member, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow border-0 shadow-md">
                 <CardHeader>
-                  <img
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
-                    className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-                  />
+                  <div className="w-32 h-32 rounded-full mx-auto mb-4 bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-white text-4xl font-bold">
+                    {member.name.charAt(0)}
+                  </div>
                   <CardTitle className="font-heading text-xl">{member.name}</CardTitle>
-                  <p className="text-yellow-600 font-medium">{member.role}</p>
+                  <p className="text-primary font-medium">{member.role}</p>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 leading-relaxed">{member.bio}</p>
+                  <p className="text-muted-foreground leading-relaxed">{member.bio}</p>
                 </CardContent>
               </Card>
             ))}
@@ -183,17 +182,17 @@ export default function AboutPage() {
       {/* Story Section */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card>
+          <Card className="border-0 shadow-lg">
             <CardContent className="p-8">
               <h2 className="font-heading font-bold text-3xl mb-6 text-center">Our Story</h2>
-              <div className="prose prose-lg max-w-none text-gray-700">
-                <p className="leading-relaxed mb-6">
+              <div className="space-y-6 text-muted-foreground">
+                <p className="leading-relaxed">
                   TrustTuition was founded in 2020 by Sarah Mitchell, a former secondary school teacher who saw
                   firsthand how traditional education systems often failed to meet individual student needs. After 15
-                  years in the classroom, Sarah recognized that personalized, one-on-one instruction could transform
+                  years in the classroom, Sarah recognized that personalised, one-on-one instruction could transform
                   learning outcomes for students of all abilities.
                 </p>
-                <p className="leading-relaxed mb-6">
+                <p className="leading-relaxed">
                   Starting with just five tutors and a simple website, TrustTuition has grown into a thriving community
                   of over 350 expert educators serving more than 2,000 students across the UK. Our success stems from
                   our unwavering commitment to quality, transparency, and putting student success first.
@@ -205,6 +204,28 @@ export default function AboutPage() {
               </div>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-heading font-bold text-3xl mb-4">Join Our Learning Community</h2>
+          <p className="text-xl mb-8">
+            Ready to start your learning journey with expert tutors?
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/quick-quote">
+              <Button size="lg" variant="secondary" className="px-8 bg-primary hover:border-primary border text-primary-foreground hover:bg-primary-foreground hover:text-primary py-4 text-lg font-semibold">
+                Get Started Today
+              </Button>
+            </a>
+            <a href="/tutors">
+              <Button size="lg" variant="outline" className="px-8 py-4 text-lg text-primary hover:bg-primary border-primary hover:text-primary-foreground">
+                Meet Our Tutors
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
 

@@ -16,7 +16,15 @@ const inter = Inter({
 export const metadata = {
   title: "TrustTuition - Professional Online Tutoring",
   description:
-    "Connect with expert tutors for personalized one-on-one learning. From £20/hour with no contracts or hidden fees.",
+    "Connect with expert tutors for personalised one-to-one learning. From £20/hour with no contracts or hidden fees.",
+  keywords:
+    "tutoring, online tutors, UK tutors, GCSE, A-Level, mathematics, English, science",
+  authors: [{ name: "TrustTuition" }],
+  openGraph: {
+    title: "TrustTuition - Professional Online Tutoring",
+    description: "Expert tutors from £20/hour",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {

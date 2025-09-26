@@ -1,12 +1,11 @@
 import Link from "next/link"
-import { GraduationCap, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
+import { GraduationCap, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, ArrowRight } from "lucide-react"
 
 export default function Footer() {
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "Find Tutors", href: "/tutors" },
     { name: "Become a Tutor", href: "/become-tutor" },
-    { name: "Quick Quote", href: "/quick-quote" },
   ]
 
   const supportLinks = [
@@ -19,38 +18,41 @@ export default function Footer() {
   const subjects = ["Mathematics", "English", "Science", "History", "Languages", "Computer Science"]
 
   return (
-    <footer className="bg-slate-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="space-y-6">
             <Link href="/" className="flex items-center space-x-2">
-              <GraduationCap className="h-8 w-8 text-yellow-400" />
-              <span className="font-heading font-bold text-xl">TrustTuition</span>
+              <GraduationCap className="h-8 w-8 text-blue-400" />
+              <span className="font-heading font-bold text-xl bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">
+                TrustTuition
+              </span>
             </Link>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Professional online tutoring with expert tutors. No contracts, no hidden fees. Just quality education from
-              £20/hour.
+            <p className="text-blue-200 text-sm leading-relaxed">
+              Professional online tutoring with expert tutors. No contracts, no hidden fees.
+              Just quality education from £20/hour.
             </p>
             <div className="flex space-x-4">
-              <Facebook className="h-5 w-5 text-gray-400 hover:text-yellow-400 cursor-pointer transition-colors" />
-              <Twitter className="h-5 w-5 text-gray-400 hover:text-yellow-400 cursor-pointer transition-colors" />
-              <Instagram className="h-5 w-5 text-gray-400 hover:text-yellow-400 cursor-pointer transition-colors" />
-              <Linkedin className="h-5 w-5 text-gray-400 hover:text-yellow-400 cursor-pointer transition-colors" />
+              <Facebook className="h-5 w-5 text-blue-300 hover:text-white cursor-pointer transition-colors hover:scale-110" />
+              <Twitter className="h-5 w-5 text-blue-300 hover:text-white cursor-pointer transition-colors hover:scale-110" />
+              <Instagram className="h-5 w-5 text-blue-300 hover:text-white cursor-pointer transition-colors hover:scale-110" />
+              <Linkedin className="h-5 w-5 text-blue-300 hover:text-white cursor-pointer transition-colors hover:scale-110" />
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <h3 className="font-heading font-semibold text-lg mb-6 text-white">Quick Links</h3>
+            <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-yellow-400 text-sm transition-colors duration-200"
+                    className="text-blue-200 hover:text-white text-sm transition-colors duration-200 flex items-center gap-1 group"
                   >
-                    {link.name}
+                    <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span>{link.name}</span>
                   </Link>
                 </li>
               ))}
@@ -59,15 +61,16 @@ export default function Footer() {
 
           {/* Support */}
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-4">Support</h3>
-            <ul className="space-y-2">
+            <h3 className="font-heading font-semibold text-lg mb-6 text-white">Support</h3>
+            <ul className="space-y-3">
               {supportLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-yellow-400 text-sm transition-colors duration-200"
+                    className="text-blue-200 hover:text-white text-sm transition-colors duration-200 flex items-center gap-1 group"
                   >
-                    {link.name}
+                    <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span>{link.name}</span>
                   </Link>
                 </li>
               ))}
@@ -76,33 +79,68 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-4">Contact Us</h3>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Mail className="h-4 w-4 text-yellow-400" />
-                <span className="text-gray-300 text-sm">hello@trusttuition.com</span>
+            <h3 className="font-heading font-semibold text-lg mb-6 text-white">Contact Us</h3>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3 group">
+                <div className="p-2 bg-blue-800/50 rounded-lg group-hover:bg-blue-700/50 transition-colors">
+                  <Mail className="h-4 w-4 text-blue-300" />
+                </div>
+                <span className="text-blue-200 text-sm group-hover:text-white transition-colors">
+                  hello@trusttuition.com
+                </span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-4 w-4 text-yellow-400" />
-                <span className="text-gray-300 text-sm">+44 20 1234 5678</span>
+              <div className="flex items-center space-x-3 group">
+                <div className="p-2 bg-blue-800/50 rounded-lg group-hover:bg-blue-700/50 transition-colors">
+                  <Phone className="h-4 w-4 text-blue-300" />
+                </div>
+                <span className="text-blue-200 text-sm group-hover:text-white transition-colors">
+                  +44 20 1234 5678
+                </span>
               </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="h-4 w-4 text-yellow-400" />
-                <span className="text-gray-300 text-sm">London, United Kingdom</span>
+              <div className="flex items-center space-x-3 group">
+                <div className="p-2 bg-blue-800/50 rounded-lg group-hover:bg-blue-700/50 transition-colors">
+                  <MapPin className="h-4 w-4 text-blue-300" />
+                </div>
+                <span className="text-blue-200 text-sm group-hover:text-white transition-colors">
+                  London, United Kingdom
+                </span>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Newsletter Subscription */}
+        <div className="mt-12 pt-8 border-t border-blue-800/50">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="font-heading font-semibold text-lg mb-2 text-white">Stay Updated</h3>
+              <p className="text-blue-200 text-sm">Get the latest tips and offers directly to your inbox</p>
+            </div>
+            <div className="flex gap-2">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-2 rounded-lg bg-blue-800/30 border border-blue-700/50 text-white placeholder-blue-300 focus:outline-none focus:border-blue-500 text-sm"
+              />
+              <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-lg text-sm font-medium hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-md">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">© 2024 TrustTuition. All rights reserved.</p>
+        <div className="border-t border-blue-800/50 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-blue-300 text-sm">© 2024 TrustTuition. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="text-gray-400 hover:text-yellow-400 text-sm transition-colors">
+            <Link href="/privacy" className="text-blue-300 hover:text-white text-sm transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-gray-400 hover:text-yellow-400 text-sm transition-colors">
+            <Link href="/terms" className="text-blue-300 hover:text-white text-sm transition-colors">
               Terms of Service
+            </Link>
+            <Link href="/cookies" className="text-blue-300 hover:text-white text-sm transition-colors">
+              Cookie Policy
             </Link>
           </div>
         </div>

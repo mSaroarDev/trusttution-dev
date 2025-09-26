@@ -141,11 +141,11 @@ export default function TutorsPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="bg-slate-900 text-white py-16">
+      <section className="bg-gradient-to-br from-blue-50 via-slate-50 to-blue-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4">Find Your Perfect Tutor</h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Browse our network of expert tutors and find the perfect match for your learning needs.
             </p>
           </div>
@@ -162,7 +162,7 @@ export default function TutorsPage() {
               <input
                 type="text"
                 placeholder="Search tutors or subjects..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -170,7 +170,7 @@ export default function TutorsPage() {
 
             {/* Subject Filter */}
             <select
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
               value={selectedSubject}
               onChange={(e) => setSelectedSubject(e.target.value)}
             >
@@ -184,7 +184,7 @@ export default function TutorsPage() {
 
             {/* Level Filter */}
             <select
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
               value={selectedLevel}
               onChange={(e) => setSelectedLevel(e.target.value)}
             >
@@ -205,13 +205,13 @@ export default function TutorsPage() {
                 max="60"
                 value={priceRange[1]}
                 onChange={(e) => setPriceRange([priceRange[0], Number.parseInt(e.target.value)])}
-                className="flex-1"
+                className="flex-1 accent-primary"
               />
               <span className="text-sm text-gray-600">£{priceRange[1]}</span>
             </div>
           </div>
 
-          <div className="mt-4 text-sm text-gray-600">
+          <div className="mt-4 text-sm text-muted-foreground">
             Showing {filteredTutors.length} of {tutors.length} tutors
           </div>
         </div>
@@ -222,12 +222,12 @@ export default function TutorsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredTutors.map((tutor) => (
-              <Card key={tutor.id} className="hover:shadow-lg transition-shadow">
+              <Card key={tutor.id} className="hover:shadow-lg transition-shadow group">
                 <CardHeader className="text-center">
                   <img
                     src={tutor.image || "/placeholder.svg"}
                     alt={tutor.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover group-hover:scale-105 transition-transform"
                   />
                   <CardTitle className="font-heading text-xl">{tutor.name}</CardTitle>
                   <CardDescription className="text-base">{tutor.subjects.join(", ")}</CardDescription>
@@ -235,14 +235,14 @@ export default function TutorsPage() {
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1">
-                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      <Star className="h-4 w-4 fill-primary text-primary" />
                       <span className="font-semibold">{tutor.rating}</span>
-                      <span className="text-sm text-gray-500">({tutor.reviews} reviews)</span>
+                      <span className="text-sm text-muted-foreground">({tutor.reviews} reviews)</span>
                     </div>
-                    <span className="text-2xl font-bold text-yellow-600">£{tutor.rate}/hr</span>
+                    <span className="text-2xl font-bold text-primary">£{tutor.rate}/hr</span>
                   </div>
 
-                  <div className="space-y-2 text-sm text-gray-600">
+                  <div className="space-y-2 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <MapPin className="h-4 w-4" />
                       <span>{tutor.location}</span>
@@ -257,15 +257,15 @@ export default function TutorsPage() {
                     </div>
                   </div>
 
-                  <p className="text-sm text-gray-600 line-clamp-2">{tutor.bio}</p>
+                  <p className="text-sm text-muted-foreground line-clamp-2">{tutor.bio}</p>
 
                   <div className="flex gap-2 pt-2">
                     <Link href={`/tutors/${tutor.id}`} className="flex-1">
-                      <Button variant="outline" className="w-full bg-transparent">
+                      <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                         View Profile
                       </Button>
                     </Link>
-                    <Button className="flex-1 bg-yellow-400 text-slate-900 hover:bg-yellow-300">Book Session</Button>
+                    <Button className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90">Book Session</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -274,9 +274,9 @@ export default function TutorsPage() {
 
           {filteredTutors.length === 0 && (
             <div className="text-center py-12">
-              <Filter className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+              <Filter className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
               <h3 className="font-heading font-semibold text-xl mb-2">No tutors found</h3>
-              <p className="text-gray-600">Try adjusting your filters to see more results.</p>
+              <p className="text-muted-foreground">Try adjusting your filters to see more results.</p>
             </div>
           )}
         </div>

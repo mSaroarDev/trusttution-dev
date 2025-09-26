@@ -20,25 +20,31 @@ import {
   PenTool,
   Code,
   Music,
+  ArrowRight,
+  PlayCircle,
+  Shield,
+  Zap,
+  Heart,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   const steps = [
     {
-      icon: <BookOpen className="h-8 w-8 text-yellow-400" />,
+      icon: <BookOpen className="h-10 w-10" />,
       title: "Tell us what you need",
       description:
         "Share your subject, level, and learning goals with our quick quote form.",
     },
     {
-      icon: <Users className="h-8 w-8 text-yellow-400" />,
+      icon: <Users className="h-10 w-10" />,
       title: "We'll find your perfect tutor",
       description:
         "Our team matches you with qualified tutors based on your specific requirements.",
     },
     {
-      icon: <Clock className="h-8 w-8 text-yellow-400" />,
+      icon: <Clock className="h-10 w-10" />,
       title: "Start learning immediately",
       description:
         "Book your first session and begin your personalized learning journey.",
@@ -51,21 +57,27 @@ export default function Home() {
       subjects: "Mathematics, Physics",
       rate: "£35/hour",
       rating: 4.9,
+      reviews: 127,
       image: "/professional-female-tutor.png",
+      badge: "PhD Mathematics",
     },
     {
       name: "James Wilson",
       subjects: "English Literature, History",
       rate: "£28/hour",
       rating: 4.8,
+      reviews: 89,
       image: "/professional-male-tutor.png",
+      badge: "Oxford Graduate",
     },
     {
       name: "Maria Garcia",
       subjects: "Spanish, French",
       rate: "£25/hour",
       rating: 4.9,
+      reviews: 156,
       image: "/female-language-tutor.png",
+      badge: "Native Speaker",
     },
   ];
 
@@ -94,12 +106,12 @@ export default function Home() {
   ];
 
   const subjects = [
-    { name: "Mathematics", icon: <Calculator className="h-6 w-6" /> },
-    { name: "English", icon: <PenTool className="h-6 w-6" /> },
-    { name: "Sciences", icon: <Microscope className="h-6 w-6" /> },
-    { name: "Languages", icon: <Globe className="h-6 w-6" /> },
-    { name: "Computer Science", icon: <Code className="h-6 w-6" /> },
-    { name: "Music", icon: <Music className="h-6 w-6" /> },
+    { name: "Mathematics", icon: <Calculator className="h-8 w-8" /> },
+    { name: "English", icon: <PenTool className="h-8 w-8" /> },
+    { name: "Sciences", icon: <Microscope className="h-8 w-8" /> },
+    { name: "Languages", icon: <Globe className="h-8 w-8" /> },
+    { name: "Computer Science", icon: <Code className="h-8 w-8" /> },
+    { name: "Music", icon: <Music className="h-8 w-8" /> },
   ];
 
   return (
@@ -107,137 +119,140 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20 lg:py-32">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <section className="relative bg-gradient-to-br from-blue-50 via-slate-50 to-blue-100 py-20 lg:py-28 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-blue-100/50 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-block bg-yellow-400 text-slate-900 px-4 py-2 rounded-full text-sm font-medium mb-6">
-              One-2-One Online Tutoring
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-left">
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <Zap className="h-4 w-4" />
+                One-to-One Online Tutoring
+              </div>
+              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl mb-6 text-balance leading-tight">
+                Expert Tutors from{" "}
+                <span className="text-primary">£20/hour</span>
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 text-balance leading-relaxed">
+                Connect with qualified tutors for personalized learning. No
+                contracts, no hidden fees. Just quality education tailored to
+                you.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 items-start">
+                <Link href="/quick-quote">
+                  <Button
+                    size="lg"
+                    className="px-8 py-4 text-lg font-semibold gap-2"
+                  >
+                    Get Started
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/tutors">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="px-8 py-4 text-lg gap-2"
+                  >
+                    <PlayCircle className="h-4 w-4" />
+                    Meet Our Tutors
+                  </Button>
+                </Link>
+              </div>
             </div>
-            <h1 className="font-heading font-bold text-4xl md:text-6xl lg:text-7xl mb-6 text-balance">
-              From £20/hour
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 text-balance leading-relaxed">
-              Connect with expert tutors for personalized one-on-one learning.
-              No contracts, no hidden fees.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/quick-quote">
-                <Button
-                  size="lg"
-                  className="bg-yellow-400 text-slate-900 hover:bg-yellow-300 px-8 py-4 text-lg font-semibold"
-                >
-                  Quick Quotation
-                </Button>
-              </Link>
-              <Link href="/tutors">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-lg bg-transparent"
-                >
-                  Browse Tutors
-                </Button>
-              </Link>
+
+            <div className="relative">
+              <Image
+                src="/hero-img.jpg"
+                alt="Tutoring services overview - Join 2000+ students learning now with Mathematics, Science & English, and Language Learning tutoring options"
+                width={600}
+                height={400}
+                className="w-full h-auto rounded-lg"
+                priority
+              />
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/20 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/10 rounded-full blur-xl"></div>
             </div>
-            <p className="text-sm text-gray-400 mt-6">
-              Join 2000+ happy students and 350+ expert tutors
-            </p>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-16 bg-muted/30">
+      {/* Trust Indicators */}
+      <section className="py-12 bg-muted/50 border-y">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4 text-balance">
-              No Hassle, No Contract, No Hidden Fees
-            </h2>
-            <h3 className="text-2xl md:text-3xl text-yellow-600 font-semibold mb-6">
-              Just One Hourly Rate
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              At TrustTuition, we believe learning should be accessible and
-              transparent. Every student is different, and so are our tutors.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <CheckCircle className="h-12 w-12 text-yellow-400 mx-auto mb-4" />
-              <h4 className="font-heading font-semibold text-lg mb-2">
-                No sign-up fees
-              </h4>
-              <p className="text-muted-foreground text-sm">
-                Start learning immediately without any upfront costs
-              </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="flex items-center justify-center gap-3">
+              <Shield className="h-6 w-6 text-primary" />
+              <span className="font-semibold">Verified Tutors</span>
             </div>
-            <div className="text-center">
-              <CheckCircle className="h-12 w-12 text-yellow-400 mx-auto mb-4" />
-              <h4 className="font-heading font-semibold text-lg mb-2">
-                Direct contact with the tutors
-              </h4>
-              <p className="text-muted-foreground text-sm">
-                We wont get in the way once youre matched
-              </p>
+            <div className="flex items-center justify-center gap-3">
+              <Clock className="h-6 w-6 text-primary" />
+              <span className="font-semibold">24/7 Support</span>
             </div>
-            <div className="text-center">
-              <CheckCircle className="h-12 w-12 text-yellow-400 mx-auto mb-4" />
-              <h4 className="font-heading font-semibold text-lg mb-2">
-                Completely pay as you go
-              </h4>
-              <p className="text-muted-foreground text-sm">
-                No contracts and cancellation at 24 hours notice
-              </p>
+            <div className="flex items-center justify-center gap-3">
+              <Heart className="h-6 w-6 text-primary" />
+              <span className="font-semibold">Satisfaction Guarantee</span>
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <CheckCircle className="h-6 w-6 text-primary" />
+              <span className="font-semibold">No Hidden Fees</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4 text-balance">
-              Connect with a tutor in minutes
+          <div className="text-center mb-16">
+            <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">
+              Simple Process,{" "}
+              <span className="text-primary">Exceptional Results</span>
             </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Getting started with your perfect tutor takes just a few minutes
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Connecting line */}
+            <div className="hidden md:block absolute top-20 left-1/3 right-1/3 h-0.5 bg-gradient-to-r from-primary/20 to-primary/30 z-0"></div>
+
             {steps.map((step, index) => (
-              <Card
-                key={index}
-                className="text-center border-2 hover:border-yellow-400/50 transition-colors"
-              >
-                <CardHeader>
-                  <div className="mx-auto mb-4 p-3 bg-slate-900 rounded-full w-fit">
-                    {step.icon}
-                  </div>
-                  <CardTitle className="font-heading text-xl">
-                    {step.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base leading-relaxed">
-                    {step.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <div key={index} className="relative z-10">
+                <Card className="text-center border shadow-lg hover:shadow-xl transition-all duration-300">
+                  <CardHeader className="pb-4">
+                    <div className="mx-auto mb-4 p-4 bg-primary text-primary-foreground rounded-2xl w-fit">
+                      {step.icon}
+                    </div>
+                    <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto -mt-8 mb-4 font-bold">
+                      {index + 1}
+                    </div>
+                    <CardTitle className="font-heading text-xl">
+                      {step.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-base leading-relaxed">
+                      {step.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Featured Tutors */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">
-              Featured Tutors
+              Meet Our <span className="text-primary">Expert Tutors</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              Meet some of our expert tutors
+              Qualified professionals ready to help you succeed
             </p>
           </div>
 
@@ -245,39 +260,64 @@ export default function Home() {
             {featuredTutors.map((tutor, index) => (
               <Card
                 key={index}
-                className="text-center hover:shadow-lg transition-shadow"
+                className="group hover:shadow-xl transition-all duration-300 overflow-hidden"
               >
-                <CardHeader>
-                  <img
-                    src={tutor.image || "/placeholder.svg"}
-                    alt={tutor.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                  />
+                <div className="relative">
+                  <div className="absolute top-4 right-4 z-10">
+                    <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
+                      {tutor.badge}
+                    </div>
+                  </div>
+                  <div className="h-48 bg-gradient-to-r from-primary to-primary/80 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-black/10"></div>
+                  </div>
+                  <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+                    <div className="w-24 h-24 rounded-full border-4 border-background shadow-lg bg-muted flex items-center justify-center">
+                      <span className="text-2xl font-bold text-primary">
+                        {tutor.name.charAt(0)}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <CardHeader className="pt-16 text-center">
                   <CardTitle className="font-heading text-xl">
                     {tutor.name}
                   </CardTitle>
-                  <CardDescription className="text-base">
+                  <CardDescription className="text-base font-medium">
                     {tutor.subjects}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-center gap-2 mb-4">
-                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    <span className="font-semibold">{tutor.rating}</span>
+
+                <CardContent className="text-center space-y-4">
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="flex items-center gap-1">
+                      <Star className="h-4 w-4 fill-primary text-primary" />
+                      <span className="font-semibold">{tutor.rating}</span>
+                    </div>
+                    <span className="text-muted-foreground">
+                      ({tutor.reviews} reviews)
+                    </span>
                   </div>
-                  <p className="text-2xl font-bold text-yellow-600 mb-4">
+
+                  <div className="text-2xl font-bold text-primary">
                     {tutor.rate}
-                  </p>
-                  <Button className="w-full">View Profile</Button>
+                  </div>
+
+                  <Button className="w-full gap-2">
+                    View Profile
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-12">
             <Link href="/tutors">
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" className="gap-2">
                 View All Tutors
+                <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
           </div>
@@ -285,40 +325,45 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">
-              Success Stories
+              Success <span className="text-primary">Stories</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              What our students say about us
+              Hear what our students have to say
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center gap-1 mb-2">
+              <Card key={index} className="hover:shadow-xl transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold">
+                      {testimonial.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-semibold">{testimonial.name}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {testimonial.role}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star
                         key={i}
-                        className="h-4 w-4 fill-yellow-400 text-yellow-400"
+                        className="h-4 w-4 fill-primary text-primary"
                       />
                     ))}
                   </div>
-                  <CardDescription className="text-base leading-relaxed italic">
-                    &quot;{testimonial.content}&quot;
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div>
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {testimonial.role}
-                    </p>
-                  </div>
+
+                  <blockquote className="text-muted-foreground leading-relaxed italic">
+                    &ldquo;{testimonial.content}&rdquo;
+                  </blockquote>
                 </CardContent>
               </Card>
             ))}
@@ -326,62 +371,82 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Subjects */}
-      <section className="py-16 bg-muted/30">
+      {/* Subjects Section */}
+      <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">
-              Popular Subjects
+              Popular <span className="text-primary">Subjects</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              Find expert tutors for any subject
+              Comprehensive tutoring across all major subjects
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {subjects.map((subject, index) => (
               <Card
                 key={index}
-                className="text-center p-6 hover:shadow-lg transition-shadow cursor-pointer hover:border-yellow-400/50"
+                className="text-center p-6 hover:shadow-xl transition-all duration-300 cursor-pointer group border"
               >
-                <div className="text-yellow-600 mb-3 flex justify-center">
+                <div className="text-primary mb-4 flex justify-center group-hover:scale-110 transition-transform">
                   {subject.icon}
                 </div>
-                <h3 className="font-semibold text-sm">{subject.name}</h3>
+                <h3 className="font-semibold group-hover:text-primary transition-colors">
+                  {subject.name}
+                </h3>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-slate-900 text-white">
+      {/* Final CTA Section */}
+      <section className="py-20 ">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4 text-balance">
-            Ready to Start Learning?
+          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6 text-balance">
+            Ready to Transform Your Learning?
           </h2>
-          <p className="text-xl text-gray-300 mb-8 text-balance">
-            Get matched with the perfect tutor in minutes. No commitment
-            required.
+          <p className="text-xl  mb-8 text-balance max-w-2xl mx-auto">
+            Join thousands of students who have achieved their academic goals
+            with our expert tutors
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Link href="/quick-quote">
               <Button
                 size="lg"
-                className="bg-yellow-400 text-slate-900 hover:bg-yellow-300 px-8 py-4 text-lg"
+                variant="secondary"
+                className="px-8 py-4 text-lg bg-primary border-primary border text-primary-foreground hover:text-primary cursor-pointer font-semibold gap-2"
               >
-                Get Quick Quote
+                Start Learning Today
+                <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
             <Link href="/tutors">
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-lg bg-transparent"
+                className="px-8 py-4 text-lg border-primary hover:bg-primary hover:text-primary-foreground cursor-pointer text-primary"
               >
-                Browse Tutors
+                Browse All Tutors
               </Button>
             </Link>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm ">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-4 w-4" />
+              No commitment required
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-4 w-4" />
+              Free first session matching
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-4 w-4" />
+              24-hour cancellation
+            </div>
           </div>
         </div>
       </section>

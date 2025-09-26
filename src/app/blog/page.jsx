@@ -2,7 +2,7 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Calendar, User, ArrowRight, BookOpen } from "lucide-react"
+import { Calendar, User, ArrowRight, BookOpen, Clock } from "lucide-react"
 import Link from "next/link"
 
 export default function BlogPage() {
@@ -10,10 +10,9 @@ export default function BlogPage() {
     {
       id: 1,
       title: "10 Effective Study Techniques That Actually Work",
-      excerpt:
-        "Discover proven study methods that can help you learn more efficiently and retain information better. From the Pomodoro Technique to active recall strategies.",
+      excerpt: "Discover proven study methods that can help you learn more efficiently and retain information better. From the Pomodoro Technique to active recall strategies.",
       author: "Dr. Sarah Johnson",
-      date: "March 15, 2024",
+      date: "15 March 2024",
       category: "Study Tips",
       image: "/blog-study-techniques.jpg",
       readTime: "5 min read",
@@ -21,10 +20,9 @@ export default function BlogPage() {
     {
       id: 2,
       title: "How to Choose the Right Tutor for Your Child",
-      excerpt:
-        "A comprehensive guide for parents on selecting the perfect tutor. Learn what qualifications to look for, questions to ask, and red flags to avoid.",
+      excerpt: "A comprehensive guide for parents on selecting the perfect tutor. Learn what qualifications to look for, questions to ask, and red flags to avoid.",
       author: "Emma Thompson",
-      date: "March 12, 2024",
+      date: "12 March 2024",
       category: "For Parents",
       image: "/blog-choosing-tutor.jpg",
       readTime: "7 min read",
@@ -32,10 +30,9 @@ export default function BlogPage() {
     {
       id: 3,
       title: "GCSE Maths: Common Mistakes and How to Avoid Them",
-      excerpt:
-        "Identify the most frequent errors students make in GCSE Mathematics and learn practical strategies to avoid these pitfalls in your exams.",
+      excerpt: "Identify the most frequent errors students make in GCSE Mathematics and learn practical strategies to avoid these pitfalls in your exams.",
       author: "James Wilson",
-      date: "March 10, 2024",
+      date: "10 March 2024",
       category: "GCSE Tips",
       image: "/blog-gcse-maths.jpg",
       readTime: "6 min read",
@@ -43,10 +40,9 @@ export default function BlogPage() {
     {
       id: 4,
       title: "The Benefits of Online Tutoring vs Traditional Face-to-Face",
-      excerpt:
-        "Explore the advantages and disadvantages of online tutoring compared to in-person sessions. Which option is right for your learning style?",
+      excerpt: "Explore the advantages and disadvantages of online tutoring compared to in-person sessions. Which option is right for your learning style?",
       author: "Dr. Michael Chen",
-      date: "March 8, 2024",
+      date: "8 March 2024",
       category: "Online Learning",
       image: "/blog-online-vs-traditional.jpg",
       readTime: "8 min read",
@@ -54,10 +50,9 @@ export default function BlogPage() {
     {
       id: 5,
       title: "A-Level Physics: Mastering Complex Concepts",
-      excerpt:
-        "Break down challenging A-Level Physics topics into manageable chunks. Tips for understanding quantum mechanics, thermodynamics, and more.",
+      excerpt: "Break down challenging A-Level Physics topics into manageable chunks. Tips for understanding quantum mechanics, thermodynamics, and more.",
       author: "Dr. Sarah Johnson",
-      date: "March 5, 2024",
+      date: "5 March 2024",
       category: "A-Level Tips",
       image: "/blog-physics-concepts.jpg",
       readTime: "9 min read",
@@ -65,12 +60,11 @@ export default function BlogPage() {
     {
       id: 6,
       title: "Building Confidence in Mathematics: A Student's Journey",
-      excerpt:
-        "Follow one student's transformation from math anxiety to mathematical confidence. Real strategies that worked and lessons learned along the way.",
+      excerpt: "Follow one student's transformation from maths anxiety to mathematical confidence. Real strategies that worked and lessons learned along the way.",
       author: "Maria Garcia",
-      date: "March 3, 2024",
+      date: "3 March 2024",
       category: "Success Stories",
-      image: "/blog-math-confidence.jpg",
+      image: "/blog-maths-confidence.jpg",
       readTime: "4 min read",
     },
   ]
@@ -93,11 +87,11 @@ export default function BlogPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="bg-slate-900 text-white py-16">
+      <section className="bg-gradient-to-br from-blue-50 via-slate-50 to-blue-100 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <BookOpen className="h-16 w-16 text-yellow-400 mx-auto mb-6" />
+          <BookOpen className="h-16 w-16 text-primary mx-auto mb-6" />
           <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4">TrustTuition Blog</h1>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-xl text-muted-foreground mb-8">
             Expert insights, study tips, and educational resources to help you succeed in your learning journey.
           </p>
         </div>
@@ -111,7 +105,7 @@ export default function BlogPage() {
               key={category}
               variant={category === "All" ? "default" : "outline"}
               size="sm"
-              className={category === "All" ? "bg-yellow-400 text-slate-900 hover:bg-yellow-300" : ""}
+              className={category === "All" ? "" : ""}
             >
               {category}
             </Button>
@@ -121,18 +115,16 @@ export default function BlogPage() {
         {/* Featured Post */}
         <div className="mb-12">
           <h2 className="font-heading font-bold text-2xl mb-6">Featured Article</h2>
-          <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+          <Card className="overflow-hidden hover:shadow-lg transition-shadow border-0 shadow-lg">
             <div className="md:flex">
               <div className="md:w-1/2">
-                <img
-                  src={featuredPost.image || "/placeholder.svg"}
-                  alt={featuredPost.title}
-                  className="w-full h-64 md:h-full object-cover"
-                />
+                <div className="w-full h-64 md:h-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-white">
+                  <BookOpen className="h-16 w-16 opacity-50" />
+                </div>
               </div>
               <div className="md:w-1/2 p-8">
-                <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
-                  <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">
+                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+                  <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
                     {featuredPost.category}
                   </span>
                   <div className="flex items-center gap-1">
@@ -142,14 +134,14 @@ export default function BlogPage() {
                   <span>{featuredPost.readTime}</span>
                 </div>
                 <h3 className="font-heading font-bold text-2xl mb-4">{featuredPost.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">{featuredPost.excerpt}</p>
+                <p className="text-muted-foreground leading-relaxed mb-6">{featuredPost.excerpt}</p>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <User className="h-4 w-4" />
                     <span>{featuredPost.author}</span>
                   </div>
                   <Link href={`/blog/${featuredPost.id}`}>
-                    <Button className="bg-yellow-400 text-slate-900 hover:bg-yellow-300">
+                    <Button>
                       Read More
                       <ArrowRight className="h-4 w-4 ml-2" />
                     </Button>
@@ -165,17 +157,13 @@ export default function BlogPage() {
           <h2 className="font-heading font-bold text-2xl mb-6">Latest Articles</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {regularPosts.map((post) => (
-              <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={post.image || "/placeholder.svg"}
-                    alt={post.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
+              <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow border-0 shadow-md">
+                <div className="aspect-video overflow-hidden bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+                  <BookOpen className="h-12 w-12 text-primary/50" />
                 </div>
                 <CardHeader>
-                  <div className="flex items-center gap-4 text-sm text-gray-600 mb-2">
-                    <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
+                    <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
                       {post.category}
                     </span>
                     <span>{post.readTime}</span>
@@ -184,18 +172,18 @@ export default function BlogPage() {
                   <CardDescription className="line-clamp-3">{post.excerpt}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <User className="h-4 w-4" />
                       <span>{post.author}</span>
                     </div>
-                    <div className="flex items-center gap-1 text-sm text-gray-600">
+                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
                       <Calendar className="h-4 w-4" />
                       <span>{post.date}</span>
                     </div>
                   </div>
-                  <Link href={`/blog/${post.id}`} className="block mt-4">
-                    <Button variant="outline" className="w-full bg-transparent">
+                  <Link href={`/blog/${post.id}`} className="block">
+                    <Button variant="outline" className="w-full">
                       Read More
                       <ArrowRight className="h-4 w-4 ml-2" />
                     </Button>

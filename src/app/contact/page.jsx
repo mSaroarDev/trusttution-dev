@@ -5,7 +5,7 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Send, ArrowRight } from "lucide-react"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -32,28 +32,22 @@ export default function ContactPage() {
 
   const contactInfo = [
     {
-      icon: <Mail className="h-6 w-6 text-yellow-600" />,
+      icon: <Mail className="h-6 w-6" />,
       title: "Email Us",
       details: "hello@trusttuition.com",
       description: "Send us an email anytime",
     },
     {
-      icon: <Phone className="h-6 w-6 text-yellow-600" />,
+      icon: <Phone className="h-6 w-6" />,
       title: "Call Us",
       details: "+44 20 1234 5678",
-      description: "Mon-Fri, 9am-6pm GMT",
+      description: "Monday to Friday, 9am-6pm GMT",
     },
     {
-      icon: <MapPin className="h-6 w-6 text-yellow-600" />,
+      icon: <MapPin className="h-6 w-6" />,
       title: "Visit Us",
       details: "London, United Kingdom",
       description: "By appointment only",
-    },
-    {
-      icon: <Clock className="h-6 w-6 text-yellow-600" />,
-      title: "Response Time",
-      details: "Within 24 hours",
-      description: "We aim to respond quickly",
     },
   ]
 
@@ -62,10 +56,10 @@ export default function ContactPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="bg-slate-900 text-white py-16">
+      <section className="bg-gradient-to-br from-blue-50 via-slate-50 to-blue-100 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4">Contact Us</h1>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-xl text-muted-foreground mb-8">
             Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
           </p>
         </div>
@@ -75,16 +69,16 @@ export default function ContactPage() {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div>
-            <Card>
+            <Card className="border-0 shadow-lg">
               <CardHeader>
                 <CardTitle className="font-heading text-2xl">Send us a Message</CardTitle>
-                <p className="text-gray-600">Fill out the form below and we'll get back to you within 24 hours.</p>
+                <p className="text-muted-foreground">Fill out the form below and we'll get back to you within 24 hours.</p>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                         Full Name *
                       </label>
                       <input
@@ -94,12 +88,12 @@ export default function ContactPage() {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                        className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                         placeholder="Your full name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                         Email Address *
                       </label>
                       <input
@@ -109,14 +103,14 @@ export default function ContactPage() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                        className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                         placeholder="your.email@example.com"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
                       Subject *
                     </label>
                     <select
@@ -125,7 +119,7 @@ export default function ContactPage() {
                       required
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                     >
                       <option value="">Select a subject</option>
                       <option value="general">General Inquiry</option>
@@ -138,7 +132,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                       Message *
                     </label>
                     <textarea
@@ -148,13 +142,13 @@ export default function ContactPage() {
                       rows={6}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent resize-none"
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background resize-none"
                       placeholder="Tell us how we can help you..."
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full bg-yellow-400 text-slate-900 hover:bg-yellow-300">
-                    <Send className="h-4 w-4 mr-2" />
+                  <Button type="submit" size="lg" className="w-full gap-2">
+                    <Send className="h-4 w-4" />
                     Send Message
                   </Button>
                 </form>
@@ -166,7 +160,7 @@ export default function ContactPage() {
           <div className="space-y-8">
             <div>
               <h2 className="font-heading font-bold text-3xl mb-6">Get in Touch</h2>
-              <p className="text-gray-600 leading-relaxed mb-8">
+              <p className="text-muted-foreground leading-relaxed mb-8">
                 Whether you're looking for a tutor, want to become one, or have any questions about our services, we're
                 here to help. Choose the best way to reach us below.
               </p>
@@ -174,14 +168,14 @@ export default function ContactPage() {
 
             <div className="grid gap-6">
               {contactInfo.map((info, index) => (
-                <Card key={index} className="hover:shadow-md transition-shadow">
+                <Card key={index} className="hover:shadow-md transition-shadow border-0 shadow-md">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 p-2 bg-yellow-100 rounded-lg">{info.icon}</div>
+                      <div className="flex-shrink-0 p-2 bg-primary/10 text-primary rounded-lg">{info.icon}</div>
                       <div>
                         <h3 className="font-semibold text-lg mb-1">{info.title}</h3>
-                        <p className="text-gray-900 font-medium mb-1">{info.details}</p>
-                        <p className="text-gray-600 text-sm">{info.description}</p>
+                        <p className="text-foreground font-medium mb-1">{info.details}</p>
+                        <p className="text-muted-foreground text-sm">{info.description}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -189,24 +183,7 @@ export default function ContactPage() {
               ))}
             </div>
 
-            {/* Map Placeholder */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="font-heading text-xl">Our Location</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="bg-gray-100 rounded-lg p-12 text-center">
-                  <MapPin className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="font-semibold text-lg mb-2">Interactive Map</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    This is where you would embed an interactive map showing your location.
-                  </p>
-                  <p className="text-xs text-gray-500">
-                    Integration ready for Google Maps, Mapbox, or similar mapping service.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+
           </div>
         </div>
       </div>

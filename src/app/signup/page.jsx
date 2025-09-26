@@ -55,7 +55,7 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <Header />
 
       <div className="min-h-[calc(100vh-200px)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -63,27 +63,27 @@ export default function SignupPage() {
           {/* Logo and Title */}
           <div className="text-center">
             <Link href="/" className="flex items-center justify-center space-x-2 mb-6">
-              <GraduationCap className="h-10 w-10 text-yellow-400" />
-              <span className="font-heading font-bold text-2xl">TrustTuition</span>
+              <GraduationCap className="h-10 w-10 text-blue-600" />
+              <span className="font-heading font-bold text-2xl text-slate-800">TrustTuition</span>
             </Link>
-            <h2 className="font-heading font-bold text-3xl text-gray-900">Create your account</h2>
-            <p className="mt-2 text-gray-600">Join thousands of students and start learning today</p>
+            <h2 className="font-heading font-bold text-3xl text-slate-800">Create your account</h2>
+            <p className="mt-2 text-slate-600">Join thousands of students and start learning today</p>
           </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-center font-heading text-xl">Sign Up</CardTitle>
+          <Card className="shadow-lg border-slate-200">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-center font-heading text-xl text-slate-800">Sign Up</CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Fields */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="firstName" className="block text-sm font-medium text-slate-700 mb-2">
                       First Name
                     </label>
                     <div className="relative">
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-4 w-4" />
                       <input
                         id="firstName"
                         name="firstName"
@@ -91,13 +91,13 @@ export default function SignupPage() {
                         required
                         value={formData.firstName}
                         onChange={handleChange}
-                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                        className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                         placeholder="John"
                       />
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="lastName" className="block text-sm font-medium text-slate-700 mb-2">
                       Last Name
                     </label>
                     <input
@@ -107,7 +107,7 @@ export default function SignupPage() {
                       required
                       value={formData.lastName}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                       placeholder="Doe"
                     />
                   </div>
@@ -115,11 +115,11 @@ export default function SignupPage() {
 
                 {/* Email Field */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
                     Email Address
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-4 w-4" />
                     <input
                       id="email"
                       name="email"
@@ -127,7 +127,7 @@ export default function SignupPage() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -135,7 +135,7 @@ export default function SignupPage() {
 
                 {/* User Type */}
                 <div>
-                  <label htmlFor="userType" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="userType" className="block text-sm font-medium text-slate-700 mb-2">
                     I am a
                   </label>
                   <select
@@ -143,7 +143,7 @@ export default function SignupPage() {
                     name="userType"
                     value={formData.userType}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                   >
                     <option value="student">Student</option>
                     <option value="parent">Parent</option>
@@ -153,11 +153,11 @@ export default function SignupPage() {
 
                 {/* Password Field */}
                 <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-2">
                     Password
                   </label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-4 w-4" />
                     <input
                       id="password"
                       name="password"
@@ -165,13 +165,13 @@ export default function SignupPage() {
                       required
                       value={formData.password}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-12 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                      className="w-full pl-10 pr-12 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                       placeholder="Create a strong password"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
                     >
                       {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </button>
@@ -180,11 +180,11 @@ export default function SignupPage() {
 
                 {/* Confirm Password Field */}
                 <div>
-                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-700 mb-2">
                     Confirm Password
                   </label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-4 w-4" />
                     <input
                       id="confirmPassword"
                       name="confirmPassword"
@@ -192,13 +192,13 @@ export default function SignupPage() {
                       required
                       value={formData.confirmPassword}
                       onChange={handleChange}
-                      className="w-full pl-10 pr-12 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                      className="w-full pl-10 pr-12 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                       placeholder="Confirm your password"
                     />
                     <button
                       type="button"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
                     >
                       {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </button>
@@ -215,15 +215,15 @@ export default function SignupPage() {
                       required
                       checked={formData.agreeToTerms}
                       onChange={handleChange}
-                      className="h-4 w-4 text-yellow-400 focus:ring-yellow-400 border-gray-300 rounded mt-0.5"
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300 rounded mt-0.5"
                     />
-                    <label htmlFor="agreeToTerms" className="ml-2 block text-sm text-gray-700">
+                    <label htmlFor="agreeToTerms" className="ml-2 block text-sm text-slate-700">
                       I agree to the{" "}
-                      <Link href="/terms" className="text-yellow-600 hover:text-yellow-700">
+                      <Link href="/terms" className="text-blue-600 hover:text-blue-700 transition-colors">
                         Terms of Service
                       </Link>{" "}
                       and{" "}
-                      <Link href="/privacy" className="text-yellow-600 hover:text-yellow-700">
+                      <Link href="/privacy" className="text-blue-600 hover:text-blue-700 transition-colors">
                         Privacy Policy
                       </Link>
                     </label>
@@ -235,16 +235,19 @@ export default function SignupPage() {
                       type="checkbox"
                       checked={formData.subscribeNewsletter}
                       onChange={handleChange}
-                      className="h-4 w-4 text-yellow-400 focus:ring-yellow-400 border-gray-300 rounded mt-0.5"
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300 rounded mt-0.5"
                     />
-                    <label htmlFor="subscribeNewsletter" className="ml-2 block text-sm text-gray-700">
+                    <label htmlFor="subscribeNewsletter" className="ml-2 block text-sm text-slate-700">
                       Send me study tips and updates (optional)
                     </label>
                   </div>
                 </div>
 
                 {/* Sign Up Button */}
-                <Button type="submit" className="w-full bg-yellow-400 text-slate-900 hover:bg-yellow-300 py-3">
+                <Button 
+                  type="submit" 
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 font-medium transition-colors"
+                >
                   Create Account
                 </Button>
               </form>
@@ -253,10 +256,10 @@ export default function SignupPage() {
               <div className="mt-6">
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-300" />
+                    <div className="w-full border-t border-slate-300" />
                   </div>
                   <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-white text-gray-500">Or sign up with</span>
+                    <span className="px-2 bg-white text-slate-500">Or sign up with</span>
                   </div>
                 </div>
               </div>
@@ -267,7 +270,7 @@ export default function SignupPage() {
                   type="button"
                   variant="outline"
                   onClick={() => handleSocialSignup("Google")}
-                  className="w-full bg-transparent"
+                  className="w-full border-slate-300 hover:border-slate-400 text-slate-700 hover:text-slate-900 transition-colors"
                 >
                   <svg className="h-4 w-4 mr-2" viewBox="0 0 24 24">
                     <path
@@ -293,7 +296,7 @@ export default function SignupPage() {
                   type="button"
                   variant="outline"
                   onClick={() => handleSocialSignup("Facebook")}
-                  className="w-full bg-transparent"
+                  className="w-full border-slate-300 hover:border-slate-400 text-slate-700 hover:text-slate-900 transition-colors"
                 >
                   <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -304,9 +307,9 @@ export default function SignupPage() {
 
               {/* Sign In Link */}
               <div className="mt-6 text-center">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-slate-600">
                   Already have an account?{" "}
-                  <Link href="/login" className="font-medium text-yellow-600 hover:text-yellow-700">
+                  <Link href="/login" className="font-medium text-blue-600 hover:text-blue-700 transition-colors">
                     Sign in here
                   </Link>
                 </p>
