@@ -1,16 +1,16 @@
 "use client"
-import { use, useState } from "react"
-import Link from "next/link"
-import Header from "@/components/header"
+import { useSignup } from "@/api/auth/auth.hooks"
 import Footer from "@/components/footer"
+import Header from "@/components/header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Eye, EyeOff, Mail, Lock, User, GraduationCap } from "lucide-react"
-import { useSignup } from "@/api/auth/auth.hooks"
-import { showToaster } from "@/helpers/useToaster"
 import { handleErrorMessage } from "@/helpers/handleErrorMessage"
+import { showToaster } from "@/helpers/useToaster"
 import { useAuth } from "@/hooks/useAuth"
+import { Eye, EyeOff, GraduationCap, Lock, Mail, User } from "lucide-react"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { useState } from "react"
 
 export default function SignupMain() {
   const {replace} = useRouter();
