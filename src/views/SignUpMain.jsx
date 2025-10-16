@@ -9,8 +9,11 @@ import { Eye, EyeOff, Mail, Lock, User, GraduationCap } from "lucide-react"
 import { useSignup } from "@/api/auth/auth.hooks"
 import { showToaster } from "@/helpers/useToaster"
 import { handleErrorMessage } from "@/helpers/handleErrorMessage"
+import { useAuth } from "@/hooks/useAuth"
+import { useRouter } from "next/navigation"
 
 export default function SignupMain() {
+  const {replace} = useRouter();
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [formData, setFormData] = useState({
@@ -26,6 +29,7 @@ export default function SignupMain() {
 
 
   const {mutateAsync: signup, isPending} = useSignup();
+  const {login, isPending: isLoginLoading} = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -48,6 +52,8 @@ export default function SignupMain() {
       const res = await signup(payload);
       if(res?.success){
         showToaster("success", res?.message || "Signup successful! Please verify your email.");
+        login({email: formData.email, password: formData.password});
+        replace("/dashboard");
       }
     } catch (error) {
       showToaster("error", handleErrorMessage(error))
@@ -243,10 +249,10 @@ export default function SignupMain() {
                 {/* Sign Up Button */}
                 <Button
                   type="submit"
-                  disabled={isPending}
+                  disabled={isPending || isLoginLoading}
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 font-medium transition-colors"
                 >
-                  {isPending ? "Creating Account..." : "Create Account"}
+                  {(isPending || isLoginLoading) ? "Creating Account..." : "Create Account"}
                 </Button>
               </form>
 
