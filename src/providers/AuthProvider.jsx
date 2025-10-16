@@ -135,6 +135,10 @@ const AuthProvider = ({ children }) => {
     getUserInfo();
   }, [token, replace]);
 
+  // check the role
+  const isTutor = state?.user?.role === "tutor";
+  const isStudent = state?.user?.role === "student";
+
   const value = {
     ...state,
     login: handleLogin,
@@ -143,6 +147,8 @@ const AuthProvider = ({ children }) => {
     token,
     dispatch,
     isInitialized,
+    isTutor,
+    isStudent,
   };
 
   return (
