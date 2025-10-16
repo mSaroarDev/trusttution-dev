@@ -2,14 +2,14 @@
 import { useAuth } from "@/hooks/useAuth";
 
 const DashboardPage = () => {
-    const {user} = useAuth();
-    console.log("user from dashboard page", user);
+  const { user } = useAuth();
+  console.log("user from dashboard page", user);
 
-    return (
-        <>
-            <h1>DashboardMain</h1>
-        </>
-    );
+  return (
+    <>
+      <h1>DashboardMain</h1>
+    </>
+  );
 };
 
 export default DashboardPage;
