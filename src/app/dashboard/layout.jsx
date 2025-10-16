@@ -1,14 +1,11 @@
-import DashHeader from "@/components/DashHeader";
-import Sidebar from "@/components/Sidebar";
+import DashboardLayout from "../layouts/DashboardLayout";
 
-export default function DashboardLayout({ children }) {
+export default function DashboardRootLayout({ children }) {
   return (
     <>
-      <Sidebar />
-      <DashHeader />
-      <div className="p-4">
+      <DashboardLayout>
         {children}
-      </div>
+      </DashboardLayout>
     </>
   )
 }

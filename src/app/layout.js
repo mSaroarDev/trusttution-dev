@@ -1,8 +1,9 @@
-import { Inter, Work_Sans } from "next/font/google";
-import "./globals.css";
-import ReactQueryProvider from "@/providers/QueryClientProvider";
 import AuthProvider from "@/providers/AuthProvider";
+import ReactQueryProvider from "@/providers/QueryClientProvider";
+import UIProvider from "@/providers/UIProvider";
+import { Inter, Work_Sans } from "next/font/google";
 import { ToastContainer } from "react-toastify";
+import "./globals.css";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
@@ -37,7 +38,7 @@ export default function RootLayout({ children }) {
         <ToastContainer />
         <ReactQueryProvider>
           <AuthProvider>
-            {children}
+            <UIProvider>{children}</UIProvider>
           </AuthProvider>
         </ReactQueryProvider>
       </body>
