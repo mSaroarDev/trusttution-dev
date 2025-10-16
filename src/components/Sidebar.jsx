@@ -2,12 +2,13 @@ import Image from "next/image";
 import logo from "@/assets/images/logo.svg";
 import logoShort from "@/assets/images/logo-short.svg";
 import { HiChevronLeft } from "react-icons/hi";
+import SidebarLinks from "./SidebarLinks";
 
 const Sidebar = ({ toggleSidebar, width = 250 }) => {
   return (
     <div
       style={{ width, transition: 'width 0.3s' }}
-      className="fixed top-0 bottom-0 left-0 z-40 bg-[#292929] text-white"
+      className="fixed top-0 bottom-0 left-0 z-40 bg-[#1f2c3b] text-[#dfdfdf]"
     >
       <div className="px-3 flex items-center justify-between">
         <div className="w-[150px] h-[100px] relative">
@@ -24,7 +25,7 @@ const Sidebar = ({ toggleSidebar, width = 250 }) => {
         </button>
       </div>
 
-      {/* <SidebarLinks /> */}
+      <SidebarLinks width={width} />
     </div>
   );
 };

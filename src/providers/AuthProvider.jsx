@@ -136,8 +136,8 @@ const AuthProvider = ({ children }) => {
   }, [token, replace]);
 
   // check the role
-  const isTutor = state?.user?.role === "tutor";
-  const isStudent = state?.user?.role === "student";
+  const isTutor = state?.user?.userType === "tutor";
+  const isStudent = state?.user?.userType === "student";
 
   const value = {
     ...state,
