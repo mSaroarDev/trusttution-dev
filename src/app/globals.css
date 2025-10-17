@@ -16,8 +16,8 @@
   --primary-foreground: oklch(0.99 0 0);
 
   /* for dashboard */
-  --brand-light: #FEF7E8;
-  --brand: #F2AA1A;
+  --brand-light: #E8F6F5;
+  --brand: #5FB4AB;
   
   --secondary: oklch(0.97 0.01 260);
   --secondary-foreground: oklch(0.25 0 0);
