@@ -5,13 +5,13 @@ import { useState } from "react";
 
 const DashboardLayout = ({ children }) => {
 
-  const [width, setWidth] = useState(250);
+  const [width, setWidth] = useState(230);
   const toggleSidebar = () => {
-    setWidth(width === 250 ? 80 : 250);
+    setWidth(width === 230 ? 80 : 230);
   }
 
   return (
-    <>
+    <div className="w-full h-screen bg-[#EDF9F9]">
       <Sidebar 
         width={width} 
         toggleSidebar={toggleSidebar}
@@ -22,11 +22,11 @@ const DashboardLayout = ({ children }) => {
       />
       <div 
         className="p-4" 
-        style={{ marginLeft: width, marginTop: 64, transition: 'margin-left 0.3s' }}
+        style={{ marginLeft: width, transition: 'margin-left 0.3s' }}
       >
         {children}
       </div>
-    </>
+    </div>
   );
 };
 

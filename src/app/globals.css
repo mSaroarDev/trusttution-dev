@@ -14,6 +14,10 @@
   /* Enhanced Blue Palette - More sophisticated */
   --primary: oklch(0.55 0.22 259.67);
   --primary-foreground: oklch(0.99 0 0);
+
+  /* for dashboard */
+  --brand-light: #FEF7E8;
+  --brand: #F2AA1A;
   
   --secondary: oklch(0.97 0.01 260);
   --secondary-foreground: oklch(0.25 0 0);
@@ -114,6 +118,8 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
+  --color-brand: var(--brand);
+  --color-brand-light: var(--brand-light);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -154,7 +160,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-[15px];
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }

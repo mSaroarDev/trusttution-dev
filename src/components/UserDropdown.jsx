@@ -1,6 +1,17 @@
+import { useAuth } from "@/hooks/useAuth";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User} from "@heroui/react";
+import { useRouter } from "next/navigation";
 
 export default function UserDropdown() {
+
+  const {replace} = useRouter();
+  const {logout} = useAuth();
+
+  const handleLogout = () => {
+    replace("/login");
+    logout();
+  };
+
   return (
     <div className="flex items-center gap-4">
       <Dropdown placement="bottom-start">
@@ -27,7 +38,7 @@ export default function UserDropdown() {
           <DropdownItem key="system">System</DropdownItem>
           <DropdownItem key="configurations">Configurations</DropdownItem>
           <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-          <DropdownItem key="logout" color="danger">
+          <DropdownItem key="logout" color="danger" onClick={handleLogout}>
             Log Out
           </DropdownItem>
         </DropdownMenu>
