@@ -165,6 +165,12 @@
   }
 }
 
+@layer components {
+  .more-action-button {
+    @apply bg-slate-100 p-1 rounded cursor-pointer hover:bg-slate-200 transition-colors;
+  }
+}
+
 /* Custom animations */
 @layer utilities {
   .animate-float {
