@@ -6,20 +6,22 @@ const Sidebar = ({ toggleSidebar, width = 230 }) => {
   return (
     <div
       style={{ width, transition: 'width 0.3s' }}
-      className="fixed top-0 bottom-0 left-0 z-40 bg-white text-[#454545] px-3 py-5"
+      className="fixed top-0 bottom-0 left-0 z-4 p-3"
     >
-      <div className="px-3 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <PiGraduationCapFill size={30} className="text-brand" />
-          {width === 230 && <span className="font-bold text-lg">TrustTution</span>}
+      <div className="bg-brand h-full p-2 rounded-xl">
+        <div className="px-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <PiGraduationCapFill size={30} className="text-white" />
+            {width === 230 && <span className="font-bold text-base text-white">TrustTution</span>}
+          </div>
+
+          {width === 230 && <button onClick={toggleSidebar} className="min-w-6 h-6 grid place-content-center rounded-full border-2 border-brand/50 -mr-3 bg-brand-light cursor-pointer">
+            <HiChevronLeft size={20} />
+          </button>}
         </div>
 
-        {width === 230 && <button onClick={toggleSidebar} className="min-w-8 h-8 grid place-content-center rounded border-2 border-brand/50 -mr-5 bg-brand-light cursor-pointer">
-          <HiChevronLeft size={20} />
-        </button>}
+        <SidebarLinks width={width} />
       </div>
-
-      <SidebarLinks width={width} />
     </div>
   );
 };

@@ -7,11 +7,11 @@ const DashboardLayout = ({ children }) => {
 
   const [width, setWidth] = useState(230);
   const toggleSidebar = () => {
-    setWidth(width === 230 ? 80 : 230);
+    setWidth(width === 230 ? 90 : 230);
   }
 
   return (
-    <div className="w-full h-screen bg-[#EDF9F9]">
+    <div className="w-full h-screen bg-[#F2F6FE]">
       <Sidebar 
         width={width} 
         toggleSidebar={toggleSidebar}
@@ -21,7 +21,7 @@ const DashboardLayout = ({ children }) => {
         toggleSidebar={toggleSidebar}
       />
       <div 
-        className="p-4" 
+        className="pt-20" 
         style={{ marginLeft: width, transition: 'margin-left 0.3s' }}
       >
         {children}

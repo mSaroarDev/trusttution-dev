@@ -12,23 +12,25 @@ const SidebarLinks = ({ width }) => {
   const pathname = usePathname();
 
   const sidebarLinks = isTutor ? tutorSidebarLinks : isStudent ? studentSidebarLinks : [];
-  console.log("SidebarLinks rendered with width:", sidebarLinks);
 
   return (
     <div className="h-full">
+      <div className="text-xs mt-10 px-1 text-white">User Menu</div>
       {sidebarLinks.length === 0 ? (
         <div className="w-full h-32 flex items-center justify-center">
-          <CgSpinner className="animate-spin text-brand" size={20} />
+          <CgSpinner className="animate-spin text-white" size={20} />
         </div> 
       ) : (
-        <div className="mt-5">
+        <div className="mt-2">
           {sidebarLinks.map((link, index) => (
             <Link
               key={index}
               href={link.href}
-              className={`flex items-center mb-1 gap-3 px-4 py-3 hover:bg-brand/5 hover:text-brand transition-colors ${width === 80 ? 'justify-center' : ''} ${pathname === link.href ? 'bg-brand-light text-brand' : ''} rounded-sm`}
+              className={`flex items-center mb-1 gap-3 px-6 py-2.5 transition-colors ${pathname !== link.href && "hover:bg-[#4970ff] hover:text-white"} ${width === 90 ? 'justify-center' : ''} ${pathname === link.href ? 'bg-white text-brand' : 'text-white'} rounded-sm`}
             >
-              {link.icon && createElement(require('react-icons/md')[link.icon], { size: 18 })}
+              <span className="flex-shrink-0">
+                {createElement(link.icon, { size: 20 })}
+              </span>
               {width === 230 && <span className="text-[14px]">{link.name}</span>}
             </Link>
           ))}
