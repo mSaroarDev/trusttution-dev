@@ -1,7 +1,9 @@
+import DashboardMain from "@/views/dashboard/DashboardMain";
+
 const page = () => {
     return (
         <>
-            <h1>page</h1>
+          <DashboardMain />
         </>
     );
 };

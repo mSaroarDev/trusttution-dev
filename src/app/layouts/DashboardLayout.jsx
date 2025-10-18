@@ -21,7 +21,7 @@ const DashboardLayout = ({ children }) => {
         toggleSidebar={toggleSidebar}
       />
       <div 
-        className="pt-20" 
+        className="pt-20 p-6" 
         style={{ marginLeft: width, transition: 'margin-left 0.3s' }}
       >
         {children}

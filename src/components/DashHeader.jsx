@@ -14,7 +14,7 @@ const DashHeader = ({ width, toggleSidebar }) => {
       style={{ marginLeft: width, transition: 'margin 0.3s', }}
       className={`fixed top-2 left-0 right-0 z-30 h-16 flex items-center ${width === 230 ? "justify-between" : "justify-between"} px-6 py-2 pl-0`}
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 px-6">
         {width === 90 &&
           <button
             onClick={toggleSidebar}
