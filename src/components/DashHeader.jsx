@@ -1,3 +1,4 @@
+
 import { HiChevronLeft } from "react-icons/hi";
 import { IoWalletOutline } from "react-icons/io5";
 import UserDropdown from "./UserDropdown";
@@ -12,9 +13,9 @@ const DashHeader = ({ width, toggleSidebar }) => {
   return (
     <div
       style={{ marginLeft: width, transition: 'margin 0.3s', }}
-      className={`bg-[#F2F6FE] fixed top-2 left-0 right-0 z-30 h-16 flex items-center ${width === 230 ? "justify-between" : "justify-between"} px-6 py-2 pl-0`}
+      className={`bg-white fixed top-3 rounded-lg left-0 right-3 z-30 h-16 flex items-center ${width === 230 ? "justify-between" : "justify-between"} px-4 py-2 pl-0`}
     >
-      <div className="flex items-center gap-2 px-6">
+      <div className="flex items-center gap-2 px-4">
         {width === 90 &&
           <button
             onClick={toggleSidebar}
