@@ -15,7 +15,7 @@ const Sidebar = ({ toggleSidebar, width = 230 }) => {
             {width === 230 && <span className="font-bold text-base text-white">TrustTution</span>}
           </div>
 
-          {width === 230 && <button onClick={toggleSidebar} className="min-w-6 h-6 grid place-content-center rounded-full border-2 border-brand/50 -mr-3 bg-brand-light cursor-pointer">
+          {width === 230 && <button onClick={toggleSidebar} className="min-w-6 h-6 grid place-content-center rounded-full border-2 border-brand/50 -mr-3 bg-[#4970ff] text-white cursor-pointer">
             <HiChevronLeft size={20} />
           </button>}
         </div>
