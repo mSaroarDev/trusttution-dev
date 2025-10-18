@@ -9,6 +9,8 @@ import { Button } from "@heroui/react";
 import { FiMoreVertical } from "react-icons/fi";
 import StatsCard from "./StatsCard";
 import EarningChartWrapper from "./EarningChartWrapper";
+import BookingCard from "./BookingCard";
+import PaymentCard from "./PaymentCard";
 
 const DashboardMain = () => {
   const { user } = useAuth();
@@ -30,11 +32,11 @@ const DashboardMain = () => {
             </Button>
           </div>
           <div>
-            <div className="relative w-[220px] h-auto -mt-12">
+            <div className="relative w-[220px] h-auto -mt-12 mr-14">
               <Image
                 src={tutorImage}
                 alt="TutorCrunch"
-                width={200}
+                width={220}
                 height={0}
                 style={{ height: 'auto' }}
               />
@@ -47,12 +49,39 @@ const DashboardMain = () => {
           <StatsCard />
           <StatsCard />
         </div>
-        
+
         <EarningChartWrapper />
       </div>
 
       <div className="col-span-4">
-        <Card></Card>
+        <Card className={"p-4"}>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 bg-brand rounded"></div>
+            <h4 className="font-medium text-base">Upcoming Bookings</h4>
+          </div>
+
+          <div className="flex flex-col gap-1 mt-3">
+            <BookingCard />
+            <BookingCard />
+            <BookingCard />
+            <BookingCard />
+            <BookingCard />
+          </div>
+        </Card>
+
+        <Card className={"p-4 mt-5"}>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 bg-brand rounded"></div>
+            <h4 className="font-medium text-base">Recent Payments</h4>
+          </div>
+
+          <div className="flex flex-col gap-1 mt-3">
+            <PaymentCard />
+            <PaymentCard />
+            <PaymentCard />
+            <PaymentCard />
+          </div>
+        </Card>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }) => {
   }
 
   return (
-    <div className="w-full h-screen bg-[#F2F6FE]">
+    <div className="w-full min-h-screen bg-[#F2F6FE]">
       <Sidebar 
         width={width} 
         toggleSidebar={toggleSidebar}
