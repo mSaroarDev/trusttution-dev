@@ -6,6 +6,9 @@ import { useAuth } from "@/hooks/useAuth";
 import Image from "next/image";
 import TutorAlert from "./TutorAlert";
 import { Button } from "@heroui/react";
+import { FiMoreVertical } from "react-icons/fi";
+import StatsCard from "./StatsCard";
+import EarningChartWrapper from "./EarningChartWrapper";
 
 const DashboardMain = () => {
   const { user } = useAuth();
@@ -39,6 +42,13 @@ const DashboardMain = () => {
           </div>
         </div>
 
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <StatsCard />
+          <StatsCard />
+          <StatsCard />
+        </div>
+        
+        <EarningChartWrapper />
       </div>
 
       <div className="col-span-4">
