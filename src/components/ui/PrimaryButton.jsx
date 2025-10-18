@@ -1,9 +1,11 @@
+"use client";
 import { Button } from "@heroui/react";
 
 const PrimaryButton = ({
   children,
   color = "primary",
   className = "",
+  size = "md",
   ...props
 }) => {
   return (
@@ -11,7 +13,7 @@ const PrimaryButton = ({
       <Button
         {...props}
         className={`${className}`}
-        size="sm"
+        size={size}
         color={color}
         radius="sm"
       >
