@@ -9,3 +9,9 @@ export const studentsBreadTree = [
   { name: "Home", url: "/dashboard/overview" },
   { name: "students" },
 ];
+
+export const appointmentsBreadTree = [
+  { name: "appointments" },
+  { name: "Home", url: "/dashboard/overview" },
+  { name: "appointments" },
+];
