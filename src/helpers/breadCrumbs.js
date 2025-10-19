@@ -21,3 +21,9 @@ export const earningsBreadTree = [
   { name: "Home", url: "/dashboard/overview" },
   { name: "earnings" },
 ];
+
+export const browseTutorsBreadTree = [
+  { name: "browse tutors" },
+  { name: "Home", url: "/dashboard/overview" },
+  { name: "tutors" },
+];
