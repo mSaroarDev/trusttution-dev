@@ -27,3 +27,15 @@ export const browseTutorsBreadTree = [
   { name: "Home", url: "/dashboard/overview" },
   { name: "tutors" },
 ];
+
+export const myClassesBreadTree = [
+  { name: "my classes" },
+  { name: "Home", url: "/dashboard/overview" },
+  { name: "classes" },
+];
+
+export const paymentsBreadTree = [
+  { name: "payments" },
+  { name: "Home", url: "/dashboard/overview" },
+  { name: "payments" },
+];
