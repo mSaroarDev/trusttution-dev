@@ -1,14 +1,17 @@
 "use client";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { Avatar } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { MdOutlineCall } from "react-icons/md";
 
 const TutorCard = () => {
+  const {push} = useRouter();
+
   return (
     <>
-      <div className="border-b border-slate-100 py-5 px-6 flex items-start justify-between hover:bg-slate-100">
+      <div onClick={()=> push(`/dashboard/browse-tutors/1`)} className="cursor-pointer border-b border-slate-100 py-5 px-6 flex items-start justify-between hover:bg-slate-100">
         <div className="flex items-start gap-5">
           <Avatar
             size="lg"
@@ -30,7 +33,7 @@ const TutorCard = () => {
               <p className="text-sm">Taught: <span className="font-semibold">252 hrs</span></p>
             </div>
 
-            <PrimaryButton variant="bordered" className="mt-4 px-4 py-2 text-sm">
+            <PrimaryButton onClick={()=> push(`/dashboard/browse-tutors/1`)} variant="bordered" className="mt-4 px-4 py-2 text-sm">
               View Profile and Pricing plan
             </PrimaryButton>
           </div>

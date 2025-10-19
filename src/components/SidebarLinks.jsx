@@ -15,23 +15,23 @@ const SidebarLinks = ({ width }) => {
 
   return (
     <div className="h-full">
-      <div className="text-xs mt-10 px-1 text-white">User Menu</div>
+      {width === 230 &&  <div className="text-xs mt-10 px-7 uppercase">User Menu</div>}
       {sidebarLinks.length === 0 ? (
         <div className="w-full h-32 flex items-center justify-center">
-          <CgSpinner className="animate-spin text-white" size={20} />
+          <CgSpinner className="animate-spin text-brand" size={20} />
         </div> 
       ) : (
-        <div className="mt-2">
+        <div className={width === 230 ? "mt-5" : "mt-10"}>
           {sidebarLinks.map((link, index) => (
             <Link
               key={index}
               href={link.href}
-              className={`flex items-center mb-1 gap-3 px-6 py-2.5 transition-colors ${pathname !== link.href && "hover:bg-[#4970ff] hover:text-white"} ${width === 90 ? 'justify-center' : ''} ${pathname === link.href ? 'bg-white text-brand' : 'text-white'} rounded-sm`}
+              className={`font-medium flex items-center mb-2 gap-3 px-6 py-2 transition-colors ${pathname !== link.href && "hover:text-brand"} ${width === 90 ? 'justify-center' : ''} ${pathname.startsWith(link.href) ? 'text-brand' : ''} rounded-sm`}
             >
               <span className="flex-shrink-0">
-                {createElement(link.icon, { size: 20 })}
+                {createElement(link.icon, { size: 22 })}
               </span>
-              {width === 230 && <span className="text-[14px]">{link.name}</span>}
+              {width === 230 && <span className="text-[15px] font-medium">{link.name}</span>}
             </Link>
           ))}
         </div>

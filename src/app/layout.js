@@ -1,7 +1,7 @@
 import AuthProvider from "@/providers/AuthProvider";
 import ReactQueryProvider from "@/providers/QueryClientProvider";
 import UIProvider from "@/providers/UIProvider";
-import { Inter, Work_Sans } from "next/font/google";
+import { Inter, Poppins, Work_Sans } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "./globals.css";
 
@@ -15,6 +15,12 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+});
+
+const poppins = Poppins({
+  subsets: ['latin'], 
+  weight: ['300','400', '500', '600', '700', '900'],
+  variable: '--font-poppins', 
 });
 
 export const metadata = {
@@ -34,7 +40,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${workSans.variable} ${inter.variable} antialiased`}>
+      <body className={`${poppins.className} antialiased`}>
         <ToastContainer />
         <ReactQueryProvider>
           <AuthProvider>
