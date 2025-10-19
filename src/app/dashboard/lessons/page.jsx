@@ -1,9 +1,9 @@
-import SignupMain from "@/views/signup/SignUpMain";
+import LessonsMain from "@/views/lessons/LessonsMain";
 
 const page = () => {
     return (
         <>
-          <SignupMain />
+          <LessonsMain />
         </>
     );
 };

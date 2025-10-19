@@ -1,9 +1,7 @@
-import SignupMain from "@/views/signup/SignUpMain";
-
 const page = () => {
     return (
         <>
-          <SignupMain />
+            <h1>page</h1>
         </>
     );
 };

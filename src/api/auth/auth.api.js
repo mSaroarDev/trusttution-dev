@@ -15,7 +15,7 @@ export const sendResetLink = async (payload) => {
   return res.data;
 };
 
-export const resetPassword = async (token) => {
-  const res = await request.post(`/auth/reset-password`, {token});
+export const resetPassword = async (payload) => {
+  const res = await request.post(`/auth/reset-password`, payload);
   return res.data;
 };
