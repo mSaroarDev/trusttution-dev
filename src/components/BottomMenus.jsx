@@ -1,6 +1,7 @@
+import { showConfirmModal } from "@/helpers/showConfirmModal";
+import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { createElement } from "react";
 import { LuSettings } from "react-icons/lu";
 import { TbLogout2 } from "react-icons/tb";
 
@@ -8,6 +9,20 @@ const BottomMenus = ({
   width = 230,
 }) => {
   const pathname = usePathname();
+  const {logout} = useAuth();
+
+  const handleLogout = () => {
+    showConfirmModal({
+      title: "Logout?",
+      text: "Are you sure you want to logout?",
+      confirmText: "Yes, Logout",
+      cancelText: "No, cancle.",
+      func: async () => {
+        logout();
+      }
+    })
+  };
+
   return (
     <>
       <div>
@@ -22,6 +37,7 @@ const BottomMenus = ({
         </Link>
 
         <button
+          onClick={handleLogout}
           className={`cursor-pointer flex items-center mb-2 gap-3 px-6 py-2 transition-colors ${pathname !== "/dashboard/settings" && "hover:text-brand"} ${width === 90 ? 'justify-center' : ''} ${pathname.startsWith("/dashboard/settings") ? 'text-brand' : ''} rounded-sm`}
         >
           <span className="flex-shrink-0 text-red-500 hover:text-red-600">
