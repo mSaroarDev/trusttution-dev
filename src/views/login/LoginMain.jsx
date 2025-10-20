@@ -30,7 +30,7 @@ export default function LoginMain() {
       const res = await login({email: formData.email, password: formData.password});
       if(res?.success) {
         showToaster("success", res?.message || "Login successful");
-        replace("/dashboard");
+        replace("/dashboard/overview");
       }
     } catch (error) {
       showToaster("error", handleErrorMessage(error) || "Login failed");
