@@ -10,6 +10,9 @@ import { LuContactRound, LuMap } from "react-icons/lu";
 import { MdOutlineCall, MdOutlinePinDrop } from "react-icons/md";
 import { GiSkills } from "react-icons/gi";
 import { Input } from "@heroui/react";
+import { RiMoneyDollarBoxLine } from "react-icons/ri";
+import { TbClockHour4 } from "react-icons/tb";
+import { LiaHourglassStartSolid } from "react-icons/lia";
 
 const TutorProfileMain = () => {
   const data = {};
@@ -95,10 +98,27 @@ const TutorProfileMain = () => {
               skills list
             </div>
           </Card>
+
+          <Card className={"p-5 mt-5"}>
+            <h4 className="font-semibold mb-3 flex items-center gap-2">
+              <RiMoneyDollarBoxLine size={18} />
+              Teaching Rates
+            </h4>
+
+            <p className="flex items-center gap-2 my-1">
+              <TbClockHour4 size={18} className="flex-shrink-0" />
+              <span className="font-semibold">$150</span>{" "}<span>/hour</span>
+            </p>
+          </Card>
         </div>
         <div className="col-span-12 lg:col-span-3">
-          <Card>
+          <Card className={"p-5"}>
+            <h4 className="font-semibold mb-3 flex items-center gap-2">
+              <LiaHourglassStartSolid size={18} />
+              Unsaved Changes
+            </h4>
 
+            <PrimaryButton fullWidth>Save Changes & Publish</PrimaryButton>
           </Card>
         </div>
       </div>
