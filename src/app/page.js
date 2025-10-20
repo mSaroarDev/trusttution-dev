@@ -1,5 +1,5 @@
-import Header from "@/components/header";
 import Footer from "@/components/footer";
+import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,26 +9,25 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  BookOpen,
-  Clock,
-  Users,
-  CheckCircle,
-  Star,
-  Calculator,
-  Globe,
-  Microscope,
-  PenTool,
-  Code,
-  Music,
   ArrowRight,
+  BookOpen,
+  Calculator,
+  CheckCircle,
+  Clock,
+  Code,
+  Globe,
+  HeartIcon,
+  Microscope,
+  Music,
+  PenTool,
   PlayCircle,
   Shield,
-  Zap,
-  Heart,
-  HeartIcon,
+  Star,
+  Users,
+  Zap
 } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const steps = [

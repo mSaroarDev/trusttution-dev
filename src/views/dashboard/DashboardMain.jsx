@@ -3,14 +3,13 @@ import tutorImage from "@/assets/images/tutor.png";
 // import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useAuth } from "@/hooks/useAuth";
-import Image from "next/image";
-import TutorAlert from "./TutorAlert";
 import { Button } from "@heroui/react";
-import { FiMoreVertical } from "react-icons/fi";
-import StatsCard from "./StatsCard";
-import EarningChartWrapper from "./EarningChartWrapper";
+import Image from "next/image";
 import BookingCard from "./BookingCard";
+import EarningChartWrapper from "./EarningChartWrapper";
 import PaymentCard from "./PaymentCard";
+import StatsCard from "./StatsCard";
+import TutorAlert from "./TutorAlert";
 
 const DashboardMain = () => {
   const { user } = useAuth();

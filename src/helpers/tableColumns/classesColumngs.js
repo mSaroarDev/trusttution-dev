@@ -1,9 +1,9 @@
-import Image from "next/image";
+// import Image from "next/image";
 
 export const classesColumns = () => [
   {
     name: "Title",
-    cell: (row) => (
+    cell: () => (
       <div className="flex items-start gap-6 p-6">
         <div className="flex-shrink-0 w-32 h-32 overflow-hidden rounded bg-brand/10"></div>
         <div>

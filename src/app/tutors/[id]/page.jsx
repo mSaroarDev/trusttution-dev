@@ -1,11 +1,9 @@
 "use client";
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Star, MapPin, Clock, BookOpen, GraduationCap, Award, Calendar, MessageCircle, CheckCircle } from "lucide-react"
-import Link from "next/link"
-import { useParams } from "next/navigation"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Award, BookOpen, Calendar, CheckCircle, Clock, GraduationCap, MapPin, MessageCircle, Star } from "lucide-react";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 // Mock data - in a real app, this would come from a database
 const getTutorById = (id) => {
@@ -101,11 +99,11 @@ export default function TutorProfile() {
             <Card>
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row gap-6">
-                  <img
+                  {/* <img
                     src={tutor.image || "/placeholder.svg"}
                     alt={tutor.name}
                     className="w-32 h-32 rounded-full object-cover mx-auto md:mx-0 border-4 border-primary/20"
-                  />
+                  /> */}
                   <div className="flex-1 text-center md:text-left">
                     <h1 className="font-heading font-bold text-3xl mb-2">{tutor.name}</h1>
                     <p className="text-xl text-muted-foreground mb-4">{tutor.subjects.join(" • ")}</p>

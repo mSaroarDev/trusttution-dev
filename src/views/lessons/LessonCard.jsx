@@ -1,13 +1,11 @@
 import PrimaryButton from "@/components/ui/PrimaryButton";
-import { Button } from "@heroui/react";
 import Link from "next/link";
-import { FaPersonChalkboard } from "react-icons/fa6";
 import { MdOutlineArrowForward } from "react-icons/md";
 // import convertToBanglaNumber from "../../../utils/convertNumbertoBangla";
 // import { detectChar } from "../../../utils/detectChar";
 import { TiStopwatch } from "react-icons/ti";
 
-const LessonCard = ({ data, isLogged = false, isHomepage = false, }) => {
+const LessonCard = ({ data, isLogged = false}) => {
 
   return (
     <>
@@ -16,11 +14,11 @@ const LessonCard = ({ data, isLogged = false, isHomepage = false, }) => {
         className="px-2 pt-2 rounded-xl bg-white dark:bg-controlled border-[1px] border-slate-200 dark:border-gray-900 hover:shadow-md transition-all duration-150 flex flex-col h-full"
       >
         <figure>
-          <img
+          {/* <img
             src={data?.image}
             alt={data?.name}
             className="w-full h-[180px] md:h-[150px] rounded-md object-cover"
-          />
+          /> */}
         </figure>
         <div className="p-4 hind-siliguri-regular flex flex-col flex-1">
           <div className="flex-1">

@@ -1,7 +1,7 @@
 import { HiOutlineUsers } from "react-icons/hi";
 import { LuTicketCheck, LuUserSearch } from "react-icons/lu";
 import { MdOutlineMenuBook } from "react-icons/md";
-import { PiProjectorScreenChart, PiUserSwitchBold } from "react-icons/pi";
+import { PiProjectorScreenChart } from "react-icons/pi";
 import { SiFampay } from "react-icons/si";
 import { TbLayout, TbWallet } from "react-icons/tb";
 

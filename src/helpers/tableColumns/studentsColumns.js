@@ -1,5 +1,4 @@
 import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@heroui/react";
-import Image from "next/image";
 import { HiTrash } from "react-icons/hi";
 import { MdOutlineMoreVert } from "react-icons/md";
 
@@ -45,7 +44,7 @@ export const studentsColumns = () => [
     name: "Action",
     width: "100px",
     center: "true",
-    cell: (row) => (
+    cell: () => (
       <Dropdown>
         <DropdownTrigger>
           <button className="more-action-button">

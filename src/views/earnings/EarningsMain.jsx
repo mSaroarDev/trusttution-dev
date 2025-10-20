@@ -1,11 +1,9 @@
 "use client";
 import BreadcrumbsComponent from "@/components/Breadcrumbs";
-import PrimaryButton from "@/components/ui/PrimaryButton";
-import { appointmentsBreadTree, earningsBreadTree } from "@/helpers/breadCrumbs";
-import { GoPlus } from "react-icons/go";
-import DataTable from "react-data-table-component";
-import { appointmentsColumns } from "@/helpers/tableColumns/appointments";
 import { appointments } from "@/data__delete/appointments";
+import { earningsBreadTree } from "@/helpers/breadCrumbs";
+import { appointmentsColumns } from "@/helpers/tableColumns/appointments";
+import DataTable from "react-data-table-component";
 import StatsCard from "../appoinments/StatsCard";
 
 const EarningsMain = () => {
