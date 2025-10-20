@@ -1,6 +1,10 @@
+"use client";
 import React from "react";
-import { Alert, Button } from "@heroui/react";
+import { Alert } from "@heroui/react";
 import { cn } from "@/lib/utils";
+import PrimaryButton from "@/components/ui/PrimaryButton";
+import { IoMdArrowForward } from "react-icons/io";
+import { useRouter } from "next/navigation";
 
 const CustomAlert = React.forwardRef(
   (
@@ -19,6 +23,7 @@ const CustomAlert = React.forwardRef(
     return (
       <Alert
         ref={ref}
+        isClosable={true}
         classNames={{
           ...classNames,
           base: cn(
@@ -51,6 +56,7 @@ CustomAlert.displayName = "CustomAlert";
 
 export default function TutorAlert() {
   const colors = ["success"];
+  const { push } = useRouter();
 
   return (
     <div className="flex flex-col w-full gap-y-6 mb-14">
@@ -61,20 +67,15 @@ export default function TutorAlert() {
           title="You have successfully created your account! Apply for tutor now."
         >
           <div className="flex items-center gap-1 mt-3">
-            <Button
+            <PrimaryButton
               className="bg-background text-default-700 font-medium border-1 shadow-small"
-              size="sm"
+              size="md"
               variant="bordered"
+              endContent={<IoMdArrowForward size={18} />}
+              onPress={()=> push('/dashboard/tutor-profile')}
             >
               Become a Tutor
-            </Button>
-            <Button
-              className="text-default-500 font-medium underline underline-offset-4"
-              size="sm"
-              variant="light"
-            >
-              Maybe later
-            </Button>
+            </PrimaryButton>
           </div>
         </CustomAlert>
       ))}

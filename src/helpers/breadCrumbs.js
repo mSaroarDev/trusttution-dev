@@ -39,3 +39,9 @@ export const paymentsBreadTree = [
   { name: "Home", url: "/dashboard/overview" },
   { name: "payments" },
 ];
+
+export const tutorProfileBreadTree = [
+  { name: "tutor Profile" },
+  { name: "Home", url: "/dashboard/overview" },
+  { name: "tutor Profile" },
+];
