@@ -1,11 +1,10 @@
 "use client"
-
-import { useState } from "react"
-import Header from "@/components/header"
 import Footer from "@/components/footer"
-import { Card, CardContent } from "@/components/ui/card"
-import { ChevronDown, ChevronUp, HelpCircle, Mail, Phone, MessageCircle } from "lucide-react"
+import Header from "@/components/header"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { ChevronDown, ChevronUp, HelpCircle, Mail, Phone } from "lucide-react"
+import { useState } from "react"
 
 export default function FAQsPage() {
   const [openItems, setOpenItems] = useState(new Set([0])) // First item open by default

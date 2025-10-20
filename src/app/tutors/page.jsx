@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 import { useState } from "react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
@@ -224,11 +223,11 @@ export default function TutorsPage() {
             {filteredTutors.map((tutor) => (
               <Card key={tutor.id} className="hover:shadow-lg transition-shadow group">
                 <CardHeader className="text-center">
-                  <img
+                  {/* <img
                     src={tutor.image || "/placeholder.svg"}
                     alt={tutor.name}
                     className="w-24 h-24 rounded-full mx-auto mb-4 object-cover group-hover:scale-105 transition-transform"
-                  />
+                  /> */}
                   <CardTitle className="font-heading text-xl">{tutor.name}</CardTitle>
                   <CardDescription className="text-base">{tutor.subjects.join(", ")}</CardDescription>
                 </CardHeader>

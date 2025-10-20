@@ -2,9 +2,15 @@ import { Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@
 import { HiTrash } from "react-icons/hi";
 import { MdOutlineMoreVert } from "react-icons/md";
 
-export const studentsColumns = () => [
+export const appointmentsColumns = () => [
   {
-    name: "Name",
+    name: "#ID",
+    selector: (row) => row.appointmentId,
+    sortable: true,
+    width: "120px",
+  },
+  {
+    name: "Student Name",
     cell: (row) => (
       <div className="flex items-center gap-2">
         <Avatar
@@ -14,36 +20,41 @@ export const studentsColumns = () => [
           className="flex-shrink-0"
         />
         <div>
-          <h3 className="font-medium">{row?.first_name} {row?.last_name}</h3>
+          <h3 className="font-medium">{row?.studentName} {row?.last_name}</h3>
           <p className="text-xs line-clamp-1">{row?.email}</p>
         </div>
       </div>
     ),
   },
   {
-    name: "ID",
-    cell: (row) => <span className="line-clamp-1">{row?.id || "N/A"}</span>,
+    name: "Subject",
+    selector: (row) => row.Subject,
+    sortable: true,
   },
   {
-    name: "Title",
-    cell: (row) => <span className="line-clamp-1">{row?.title || "N/A"}</span>,
+    name: "Date",
+    selector: (row) => row.date,
+    sortable: true,
   },
   {
-    name: "Phone",
-    selector: (row) => row.mobile,
-  },
-  {
-    name: "Address",
+    name: "Time",
     cell: (row) => (
-      <div className="whitespace-break-spaces">
-        {row.town}, {row.country}
-      </div>
-    ),
+      <span>
+        {row.startTime} - {row.endTime}
+      </span>),
   },
   {
-    name: "Action",
+    name: "Mobile Number",
+    selector: (row) => row.mobileNumber,
+  },
+  {
+    name: "Status",
+    selector: (row) => row.status,
+    sortable: true,
+  },
+  {
+    name: "Actions",
     width: "100px",
-    center: "true",
     cell: () => (
       <Dropdown>
         <DropdownTrigger>
@@ -84,6 +95,6 @@ export const studentsColumns = () => [
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>
-    ),
-  },
+    )
+  }
 ]

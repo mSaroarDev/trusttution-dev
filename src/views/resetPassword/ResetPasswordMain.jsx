@@ -23,7 +23,7 @@ export default function ResetPasswordMain() {
   });
 
   const searchParams = useSearchParams();
-  const token = searchParams.get('token') 
+  const token = searchParams.get('token')
 
   const { mutateAsync: resetPassword, isPending } = useResetPassword();
 
@@ -96,7 +96,7 @@ export default function ResetPasswordMain() {
                       required
                       value={formData.password}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-12 py-3 ${error ? "border-red-500" : " border-slate-300" } border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors`}
+                      className={`w-full pl-10 pr-12 py-3 ${error ? "border-red-500" : " border-slate-300"} border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors`}
                       placeholder="Create a strong password"
                     />
                     <button
@@ -123,7 +123,7 @@ export default function ResetPasswordMain() {
                       required
                       value={formData.confirmPassword}
                       onChange={handleChange}
-                      className={`w-full pl-10 pr-12 py-3 ${error ? "border-red-500" : " border-slate-300" } border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors`}
+                      className={`w-full pl-10 pr-12 py-3 ${error ? "border-red-500" : " border-slate-300"} border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors`}
                       placeholder="Confirm your password"
                     />
                     <button

@@ -1,5 +1,4 @@
 "use client"
-
 import { useState } from "react"
 import Link from "next/link"
 import Header from "@/components/header"
@@ -30,7 +29,7 @@ export default function LoginMain() {
       const res = await login({email: formData.email, password: formData.password});
       if(res?.success) {
         showToaster("success", res?.message || "Login successful");
-        replace("/dashboard");
+        replace("/dashboard/overview");
       }
     } catch (error) {
       showToaster("error", handleErrorMessage(error) || "Login failed");
@@ -45,10 +44,10 @@ export default function LoginMain() {
     })
   }
 
-  const handleSocialLogin = (provider) => {
-    console.log(`${provider} login clicked`)
-    alert(`${provider} login would be implemented here`)
-  }
+  // const handleSocialLogin = (provider) => {
+  //   console.log(`${provider} login clicked`)
+  //   alert(`${provider} login would be implemented here`)
+  // }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">

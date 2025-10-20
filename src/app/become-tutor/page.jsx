@@ -107,7 +107,7 @@ export default function BecomeTutorPage() {
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-heading font-bold text-3xl mb-4">What We're Looking For</h2>
+            <h2 className="font-heading font-bold text-3xl mb-4">{`What We're Looking For`}</h2>
             <p className="text-lg text-muted-foreground">
               We welcome applications from qualified individuals who are passionate about teaching.
             </p>

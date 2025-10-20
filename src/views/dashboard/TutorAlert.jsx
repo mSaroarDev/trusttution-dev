@@ -14,7 +14,7 @@ const CustomAlert = React.forwardRef(
         default:
           return "before:bg-default-200";
       }
-    }, []);
+    }, [color]);
 
     return (
       <Alert

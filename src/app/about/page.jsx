@@ -1,8 +1,8 @@
-import Header from "@/components/header"
 import Footer from "@/components/footer"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, Target, Award, Heart, Star, CheckCircle } from "lucide-react"
+import Header from "@/components/header"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Award, Heart, Target, Users } from "lucide-react"
 
 export default function AboutPage() {
   const values = [
@@ -65,8 +65,8 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading font-bold text-4xl md:text-6xl mb-6">About TrustTuition</h1>
           <p className="text-xl text-muted-foreground mb-8 text-balance leading-relaxed">
-            We're on a mission to make quality education accessible to everyone through personalised, affordable online
-            tutoring.
+            {`We're on a mission to make quality education accessible to everyone through personalised, affordable online
+            tutoring.`}
           </p>
         </div>
       </section>
@@ -97,7 +97,7 @@ export default function AboutPage() {
 
             <Card className="border-l-4 border-l-primary">
               <CardContent className="p-6">
-                <h3 className="font-heading font-semibold text-xl mb-3">Why We're Different</h3>
+                <h3 className="font-heading font-semibold text-xl mb-3">{`Why We're Different`}</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Unlike traditional tutoring agencies, we believe in transparency and flexibility. No contracts, no
                   hidden fees, just honest pricing and quality education. We carefully vet every tutor and provide
@@ -220,11 +220,11 @@ export default function AboutPage() {
                 Get Started Today
               </Button>
             </a>
-            <a href="/tutors">
+            {/* <a href="/tutors"> */}
               <Button size="lg" variant="outline" className="px-8 py-4 text-lg text-primary hover:bg-primary border-primary hover:text-primary-foreground">
                 Meet Our Tutors
               </Button>
-            </a>
+            {/* </a> */}
           </div>
         </div>
       </section>

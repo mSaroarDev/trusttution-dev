@@ -1,9 +1,9 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Star, MapPin, Clock, BookOpen, GraduationCap, Award, Calendar, MessageCircle, CheckCircle } from "lucide-react"
-import Link from "next/link"
+"use client";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Award, BookOpen, Calendar, CheckCircle, Clock, GraduationCap, MapPin, MessageCircle, Star } from "lucide-react";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 // Mock data - in a real app, this would come from a database
 const getTutorById = (id) => {
@@ -58,27 +58,31 @@ const getTutorById = (id) => {
   return tutors[id] || null
 }
 
-export default function TutorProfile({ params }) {
-  const tutor = getTutorById(params.id)
+export default function TutorProfile() {
+  const {id, tutorId} = useParams();
+  console.log(id);
+
+  const tutor = getTutorById(id || tutorId);
+  
 
   if (!tutor) {
     return (
       <div className="min-h-screen bg-background">
-        <Header />
+        {/* <Header /> */}
         <div className="max-w-4xl mx-auto px-4 py-16 text-center">
           <h1 className="text-2xl font-bold mb-4">Tutor not found</h1>
           <Link href="/tutors">
             <Button>Back to Tutors</Button>
           </Link>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     )
   }
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      {/* <Header /> */}
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
@@ -95,11 +99,11 @@ export default function TutorProfile({ params }) {
             <Card>
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row gap-6">
-                  <img
+                  {/* <img
                     src={tutor.image || "/placeholder.svg"}
                     alt={tutor.name}
                     className="w-32 h-32 rounded-full object-cover mx-auto md:mx-0 border-4 border-primary/20"
-                  />
+                  /> */}
                   <div className="flex-1 text-center md:text-left">
                     <h1 className="font-heading font-bold text-3xl mb-2">{tutor.name}</h1>
                     <p className="text-xl text-muted-foreground mb-4">{tutor.subjects.join(" • ")}</p>
@@ -253,7 +257,7 @@ export default function TutorProfile({ params }) {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

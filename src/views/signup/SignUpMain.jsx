@@ -68,10 +68,10 @@ export default function SignupMain() {
     })
   }
 
-  const handleSocialSignup = (provider) => {
-    console.log(`${provider} signup clicked`)
-    alert(`${provider} signup would be implemented here`)
-  }
+  // const handleSocialSignup = (provider) => {
+  //   console.log(`${provider} signup clicked`)
+  //   alert(`${provider} signup would be implemented here`)
+  // }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">

@@ -13,7 +13,7 @@ const DashHeader = ({ width, toggleSidebar }) => {
   return (
     <div
       style={{ marginLeft: width, transition: 'margin 0.3s', }}
-      className={`bg-white fixed top-3 rounded-lg left-0 right-3 z-30 h-16 flex items-center ${width === 230 ? "justify-between" : "justify-between"} px-4 py-2 pl-0`}
+      className={`bg-white fixed top-3 rounded-lg left-3 right-3 z-30 h-16 flex items-center ${width === 230 ? "justify-between" : "justify-between"} px-4 py-2 pl-0`}
     >
       <div className="flex items-center gap-2 px-4">
         {width === 90 &&

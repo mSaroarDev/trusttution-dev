@@ -1,11 +1,10 @@
 "use client"
-
-import { useState } from "react"
-import Header from "@/components/header"
 import Footer from "@/components/footer"
+import Header from "@/components/header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, Phone, MapPin, Clock, Send, ArrowRight } from "lucide-react"
+import { Mail, MapPin, Phone, Send } from "lucide-react"
+import { useState } from "react"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -60,7 +59,7 @@ export default function ContactPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4">Contact Us</h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            {`Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.`}
           </p>
         </div>
       </section>
@@ -72,7 +71,7 @@ export default function ContactPage() {
             <Card className="border-0 shadow-lg">
               <CardHeader>
                 <CardTitle className="font-heading text-2xl">Send us a Message</CardTitle>
-                <p className="text-muted-foreground">Fill out the form below and we'll get back to you within 24 hours.</p>
+                <p className="text-muted-foreground">{`Fill out the form below and we'll get back to you within 24 hours.`}</p>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -161,8 +160,8 @@ export default function ContactPage() {
             <div>
               <h2 className="font-heading font-bold text-3xl mb-6">Get in Touch</h2>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                Whether you're looking for a tutor, want to become one, or have any questions about our services, we're
-                here to help. Choose the best way to reach us below.
+                {`Whether you're looking for a tutor, want to become one, or have any questions about our services, we're
+                here to help. Choose the best way to reach us below.`}
               </p>
             </div>
 

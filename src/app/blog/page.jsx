@@ -1,8 +1,8 @@
-import Header from "@/components/header"
 import Footer from "@/components/footer"
+import Header from "@/components/header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Calendar, User, ArrowRight, BookOpen, Clock } from "lucide-react"
+import { ArrowRight, BookOpen, Calendar, User } from "lucide-react"
 import Link from "next/link"
 
 export default function BlogPage() {
@@ -69,17 +69,17 @@ export default function BlogPage() {
     },
   ]
 
-  const categories = [
-    "All",
-    "Study Tips",
-    "For Parents",
-    "GCSE Tips",
-    "A-Level Tips",
-    "Online Learning",
-    "Success Stories",
-  ]
+  // const categories = [
+  //   "All",
+  //   "Study Tips",
+  //   "For Parents",
+  //   "GCSE Tips",
+  //   "A-Level Tips",
+  //   "Online Learning",
+  //   "Success Stories",
+  // ]
 
-  const featuredPost = blogPosts[0]
+  // const featuredPost = blogPosts[0]
   const regularPosts = blogPosts.slice(1)
 
   return (
