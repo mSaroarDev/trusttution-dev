@@ -1,3 +1,4 @@
+"use client";
 import { showConfirmModal } from "@/helpers/showConfirmModal";
 import { useAuth } from "@/hooks/useAuth";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, User } from "@heroui/react";

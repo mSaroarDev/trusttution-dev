@@ -88,6 +88,7 @@ const AuthProvider = ({ children }) => {
 
   // Initialize token from storage on mount
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
       setToken(storedToken);
@@ -109,7 +110,6 @@ const AuthProvider = ({ children }) => {
       try {
         dispatch({ type: "SET_LOADING", payload: true });
         const response = await request.get("/auth/my-info");
-        console.log("User info fetched successfully:", response);
         
         if (response?.data?.success && response?.data?.data) {
           dispatch({ type: "LOGIN", payload: response?.data?.data });
@@ -151,11 +151,11 @@ const AuthProvider = ({ children }) => {
     isStudent,
   };
 
-  return (
+  return isInitialized ? (
     <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
-  );
+  ) : null;
 };
 
 export default AuthProvider;

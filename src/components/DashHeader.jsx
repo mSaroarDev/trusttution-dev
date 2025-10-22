@@ -1,4 +1,4 @@
-
+"use client";
 import { HiChevronLeft } from "react-icons/hi";
 import { IoWalletOutline } from "react-icons/io5";
 import UserDropdown from "./UserDropdown";
