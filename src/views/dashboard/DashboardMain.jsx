@@ -17,11 +17,11 @@ const DashboardMain = () => {
   return (
     <div className="grid grid-cols-12 gap-5">
       <div className="col-span-8 w-full">
-        {!user?.isTutorCreated && (
+        {!user?.tutorId && (
           <TutorAlert />
         )}
 
-        <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-between w-full rounded-md">
+        <div className="mt-10 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-between w-full rounded-md">
           <div className="p-5">
             <h3 className="text-4xl text-white font-semibold">Share Your Knowledge with the World</h3>
             <p className="text-white/90 mt-2">Create and publish your own online courses to inspire and teach students globally.</p>

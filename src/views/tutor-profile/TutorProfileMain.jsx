@@ -17,6 +17,9 @@ import Input from "@/components/ui/input";
 import Label from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import { FaMobileRetro } from "react-icons/fa6";
+import { useCreateTutor, useGetTutorProfile } from "@/api/tutors/tutors.hooks";
+import { showToaster } from "@/helpers/useToaster";
+import { handleErrorMessage } from "@/helpers/handleErrorMessage";
 
 const TutorProfileMain = () => {
   const data = {};
@@ -26,7 +29,7 @@ const TutorProfileMain = () => {
   const defaultValues = {
     "first_name": "Billy",
     "last_name": "Bob",
-    "email": "billy_bodfddgadfdf888fdb@example.com",
+    "email": "billy_boo55@example.com",
     "mobile": "07123456789",
     "phone": "02081234567",
     "street": "177 South Lambeth Road",
@@ -54,7 +57,21 @@ const TutorProfileMain = () => {
     defaultValues
   });
 
-  const toggleEdit = () => setIsEditing(!isEditing);
+  const {mutateAsync: createProfile, isPending} = useCreateTutor();
+  const {data: tutorProfile, isPending: isLoadingProfile} = useGetTutorProfile(5120227);
+  console.log("tutorProfile ==>", tutorProfile);
+
+  const onSubmit = async (formData) => {
+    try {
+      const res = await createProfile(formData);
+      if(res?.success){
+        setIsEditing(false);
+        showToaster("success", res?.message || "Profile created successfully");
+      };
+    } catch (error) {
+      showToaster("error", handleErrorMessage(error) || "Failed to create profile");
+    }
+  }
 
   return (
     <>
@@ -73,7 +90,7 @@ const TutorProfileMain = () => {
           <Card className="p-5">
             <div className="w-32 h-32 relative overflow-hidden rounded-md">
               <Image
-                src={avatar}
+                src={tutorProfile?.result?.photo || avatar}
                 alt="Tutor Avatar"
                 fill
                 className="w-full h-full object-cover"
@@ -270,7 +287,7 @@ const TutorProfileMain = () => {
               Unsaved Changes
             </h4>
 
-            <PrimaryButton onPress={()=> setIsEditing(false)} fullWidth>
+            <PrimaryButton isDisabled={!isEditing} isLoading={isPending} onPress={handleSubmit(onSubmit)} fullWidth>
               {isEditing ? "Update Profile" : "Save Changes"}
             </PrimaryButton>
           </Card>
