@@ -7,7 +7,7 @@ import { TbLayout, TbWallet } from "react-icons/tb";
 
 export const tutorSidebarLinks = [
   {id: 1, name: 'Overview', href: '/dashboard/overview', icon: TbLayout},
-  {id: 2, name: 'Lessons', href: '/dashboard/lessons', icon: MdOutlineMenuBook},
+  {id: 2, name: 'Services', href: '/dashboard/lessons', icon: MdOutlineMenuBook},
   {id: 3, name: 'Students', href: '/dashboard/students', icon: HiOutlineUsers},
   {id: 4, name: 'Appointments', href: '/dashboard/appointments', icon: LuTicketCheck},
   {id: 5, name: 'Earnings', href: '/dashboard/earnings', icon: TbWallet},
