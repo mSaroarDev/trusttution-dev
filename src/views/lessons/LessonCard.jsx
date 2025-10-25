@@ -9,16 +9,22 @@ import { RiMoneyDollarBoxLine } from "react-icons/ri";
 // import convertToBanglaNumber from "../../../utils/convertNumbertoBangla";
 // import { detectChar } from "../../../utils/detectChar";
 import { TiStopwatch } from "react-icons/ti";
+import ServiceDetails from "./ServiceDetails";
 
 const LessonCard = ({ data, isLogged = false }) => {
   const [showModal, setShowModal] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
 
   return (
     <>
       <div
         // href={isLogged ? `/user/courses/${data?._id}` : `/course/details/${data?._id}`}
         className="px-2 pt-2 rounded-xl bg-white dark:bg-controlled border border-slate-200 dark:border-gray-900 hover:shadow-md transition-all duration-150 flex flex-col h-full"
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          setShowModal(true)
+          setSelectedService(data)
+        }
+        }
       >
         <figure>
           {/* <img
@@ -53,7 +59,13 @@ const LessonCard = ({ data, isLogged = false }) => {
                 <p>${data?.dft_charge_rate}<span className="text-sm">/hour</span></p>
                 <div className="flex items-center gap-2">
                   <RenderStatus status={data?.status} />
-                  <button onClick={()=> setShowModal(true)} className="more-action-button">
+                  <button
+                    onClick={() => {
+                      setShowModal(true)
+                      setSelectedService(data)
+                    }}
+                    className="more-action-button"
+                  >
                     <IoChevronForwardOutline size={18} />
                   </button>
                 </div>
@@ -69,8 +81,11 @@ const LessonCard = ({ data, isLogged = false }) => {
           onOpenChange={() => setShowModal(false)}
           showFooter
           size="3xl"
+          title="Service Details"
         >
-          <h1>test title</h1>
+          <ServiceDetails 
+            data={selectedService}
+          />
         </PrimaryModal>
       )}
     </>

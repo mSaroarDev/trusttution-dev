@@ -17,6 +17,7 @@ export default function PrimaryModal({
   submitButtonText = "Action",
   submitButtonFunction = () => {},
   size = "md",
+  title
 }) {
   // const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
@@ -30,7 +31,9 @@ export default function PrimaryModal({
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">
+                <h3 className="text-lg font-semibold hind-siliguri-600">{title}</h3>
+              </ModalHeader>
               <ModalBody className="mb-5">
                 {children}
               </ModalBody>
