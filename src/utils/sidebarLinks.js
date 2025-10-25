@@ -17,6 +17,7 @@ export const studentSidebarLinks = [
   {id: 1, name: 'Dashboard', href: '/dashboard/overview', icon: TbLayout},
   {id: 2, name: 'Browse Tutors', href: '/dashboard/browse-tutors', icon: LuUserSearch},
   // {id: 3, name: 'My Tutors', href: '/dashboard/my-tutors', icon: PiUserSwitchBold},
+  {id: 6, name: 'Appointments', href: '/dashboard/appointments', icon: LuTicketCheck},
   {id: 4, name: 'My Classes', href: '/dashboard/my-classes', icon: PiProjectorScreenChart},
   {id: 5, name: 'Payments', href: '/dashboard/payments', icon: SiFampay},
 ];
