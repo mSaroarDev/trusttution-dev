@@ -1,6 +1,7 @@
 "use client";
 import { useGetTutorAvailability, useGetTutorProfile } from "@/api/tutors/tutors.hooks";
 import BackButton from "@/components/BackButton";
+import RenderStatus from "@/components/RenderStatus";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Spinner } from "@heroui/react";
@@ -78,17 +79,20 @@ export default function TutorProfile() {
                     <div className="flex flex-wrap gap-4 justify-center md:justify-start text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <Star size={18} className="fill-primary text-primary" />
-                        <span>{tutor?.result?.review_rating || "N/A"}</span>
+                        <span className="mt-0.5">{tutor?.result?.review_rating || "N/A"}</span>
                         {/* <span>({tutor?.result?.reviews?.length} reviews)</span> */}
                       </div>
                       <div className="flex items-center gap-1">
                         <MapPin className="h-4 w-4" />
-                        <span>{tutor?.result?.town}, {tutor?.result?.country} - {tutor?.result?.postcode}</span>
+                        <span className="mt-0.5">{tutor?.result?.town}, {tutor?.result?.country} - {tutor?.result?.postcode}</span>
                       </div>
                       {/* <div className="flex items-center gap-1">
                         <BookOpen className="h-4 w-4" />
                         <span>{tutor?.result?.experience} experience</span>
                       </div> */}
+                    </div>
+                    <div className="mt-5">
+                      <RenderStatus status={tutor?.result?.status} />
                     </div>
                   </div>
                 </div>
