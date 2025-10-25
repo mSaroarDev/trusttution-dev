@@ -4,8 +4,11 @@ import { lessondTree } from "@/helpers/breadCrumbs";
 import { Button } from "@heroui/react";
 import { GoPlus } from "react-icons/go";
 import LessonCard from "./LessonCard";
+import { useGetServices } from "@/api/services/services.hooks";
 
 const LessonsMain = () => {
+  const {data: services, isPending} = useGetServices();
+
     return (
         <>
           <div className="flex items-center justify-between">
@@ -21,12 +24,10 @@ const LessonsMain = () => {
             <h4 className="font-medium text-base">My Lessons</h4>
           </div>
 
-          <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            <LessonCard />
-            <LessonCard />
-            <LessonCard />
-            <LessonCard />
-            <LessonCard />
+          <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+            {services?.data?.map((service, index)=> (
+              <LessonCard key={index} data={service} isLogged={true} />
+            ))}
           </div>
         </>
     );

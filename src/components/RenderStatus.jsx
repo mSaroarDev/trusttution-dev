@@ -1,6 +1,7 @@
 const RenderStatus = ({status, size, styles}) => {
   const colors = {
     active: "#6ABF2F",
+    available: "#6ABF2F",
     passed: "#6ABF2F",
     Passed: "#6ABF2F",
     accepted: "#6ABF2F",
@@ -13,6 +14,7 @@ const RenderStatus = ({status, size, styles}) => {
     Upcoming: "#F9D32C",  
     pending: "#F9D32C",  
     "under-review": "#F9D32C",  
+    "in-progress": "#F9D32C",  
     "not-paid": "#F9D32C",
     due: "#AA3C4B",
     expired: "#AA3C4B",

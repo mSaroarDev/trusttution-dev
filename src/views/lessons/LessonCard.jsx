@@ -1,17 +1,24 @@
+import PrimaryModal from "@/components/PrimaryModal";
+import RenderStatus from "@/components/RenderStatus";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import Link from "next/link";
+import { useState } from "react";
+import { IoChevronForwardOutline } from "react-icons/io5";
 import { MdOutlineArrowForward } from "react-icons/md";
+import { RiMoneyDollarBoxLine } from "react-icons/ri";
 // import convertToBanglaNumber from "../../../utils/convertNumbertoBangla";
 // import { detectChar } from "../../../utils/detectChar";
 import { TiStopwatch } from "react-icons/ti";
 
-const LessonCard = ({ data, isLogged = false}) => {
+const LessonCard = ({ data, isLogged = false }) => {
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <Link
-        href={isLogged ? `/user/courses/${data?._id}` : `/course/details/${data?._id}`}
-        className="px-2 pt-2 rounded-xl bg-white dark:bg-controlled border-[1px] border-slate-200 dark:border-gray-900 hover:shadow-md transition-all duration-150 flex flex-col h-full"
+      <div
+        // href={isLogged ? `/user/courses/${data?._id}` : `/course/details/${data?._id}`}
+        className="px-2 pt-2 rounded-xl bg-white dark:bg-controlled border border-slate-200 dark:border-gray-900 hover:shadow-md transition-all duration-150 flex flex-col h-full"
+        onClick={() => setShowModal(true)}
       >
         <figure>
           {/* <img
@@ -26,27 +33,46 @@ const LessonCard = ({ data, isLogged = false}) => {
               {/* <RenderStatus status={data?.status} /> */}
             </div>
 
-            <h1 className={`font-semibold text-base mt-3`}>
-              What is Lorem Ipsum?
-            </h1>
+            <div className="flex items-start gap-2">
+              <div className="bg-brand/10 w-14 h-14 shrink-0 rounded-sm"></div>
+              <div>
+                <h1 className={`font-medium line-clamp-2`}>
+                  {data?.name}
+                </h1>
+              </div>
+            </div>
           </div>
 
           <div className="mt-2">
-            <p className="hind-siliguri-bold mb-3 flex items-center gap-2">
-              <TiStopwatch className="w-4 h-4" /> 
-              <span>
-                40 min
-              </span>
-            </p>
-          
-            <div className="pt-2">
-              <PrimaryButton endContent={<MdOutlineArrowForward size={18} />} color="primary" className="w-full px-3 py-1 rounded-md font-medium ms-auto">
-                View Details
-              </PrimaryButton>
+            {/* <div className="flex items-center justify-between">
+
+            </div> */}
+
+            <div className="pt-2 mt-3">
+              <div className="text-xl flex items-center justify-between">
+                <p>${data?.dft_charge_rate}<span className="text-sm">/hour</span></p>
+                <div className="flex items-center gap-2">
+                  <RenderStatus status={data?.status} />
+                  <button onClick={()=> setShowModal(true)} className="more-action-button">
+                    <IoChevronForwardOutline size={18} />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </Link>
+      </div>
+
+      {showModal && (
+        <PrimaryModal
+          isOpen={showModal}
+          onOpenChange={() => setShowModal(false)}
+          showFooter
+          size="3xl"
+        >
+          <h1>test title</h1>
+        </PrimaryModal>
+      )}
     </>
   );
 };

@@ -1,0 +1,54 @@
+
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+} from "@heroui/react";
+import { Button } from "./ui/button";
+
+export default function PrimaryModal({
+  isOpen,
+  children,
+  onOpenChange,
+  showFooter = false,
+  submitButtonText = "Action",
+  submitButtonFunction = () => {},
+  size = "md",
+}) {
+  // const {isOpen, onOpen, onOpenChange} = useDisclosure();
+
+  return (
+    <>
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        size={size}
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+              <ModalBody className="mb-5">
+                {children}
+              </ModalBody>
+              {showFooter && (
+                <ModalFooter>
+                  <Button 
+                    color="primary" 
+                    onClick={submitButtonFunction}
+                  >
+                    {submitButtonText}
+                  </Button>
+                </ModalFooter>
+              )}
+
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </>
+  );
+}
