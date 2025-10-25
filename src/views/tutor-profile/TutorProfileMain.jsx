@@ -212,6 +212,7 @@ const TutorProfileMain = () => {
                       {...register("email")}
                       placeholder="Enter email address"
                       className={errors.email ? "border-red-500" : ""}
+                      disabled
                     />
                   ) : (
                     <span className="line-clamp-1">
