@@ -9,3 +9,13 @@ export const getTutorProfile = async (tutorId) => {
   const res = await request.get(`/tutors/${tutorId}`);
   return res.data;
 };
+
+export const getTutorsList = async (params) => {
+  const res = await request.get("/tutors", { params });
+  return res.data;
+};
+
+export const getTutorAvailability = async (tutorId) => {
+  const res = await request.get(`/tutors/tutor-availability/${tutorId}`);
+  return res.data;
+};

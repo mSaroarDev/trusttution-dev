@@ -1,31 +1,32 @@
 "use client";
-import BreadcrumbsComponent from "@/components/Breadcrumbs";
-import { Card } from "@/components/ui/card";
-import PrimaryButton from "@/components/ui/PrimaryButton";
-import { tutorProfileBreadTree } from "@/helpers/breadCrumbs";
-import { BiPaperPlane, BiSolidEdit } from "react-icons/bi";
+import { useCreateTutor, useGetTutorProfile } from "@/api/tutors/tutors.hooks";
+import { useGetCountries } from "@/api/utils/utils.hooks";
 import avatar from "@/assets/images/placeholder.png";
-import Image from "next/image";
-import { LuContactRound, LuMap } from "react-icons/lu";
-import { MdOutlineCall, MdOutlinePinDrop } from "react-icons/md";
-import { GiSkills } from "react-icons/gi";
-import { RiMoneyDollarBoxLine } from "react-icons/ri";
-import { TbClockHour4 } from "react-icons/tb";
-import { LiaHourglassStartSolid } from "react-icons/lia";
-import { useEffect, useMemo, useState } from "react";
+import BreadcrumbsComponent from "@/components/Breadcrumbs";
+import ProfileSkeleton from "@/components/loaderSeketons/ProfileSkeleton";
+import { Card } from "@/components/ui/card";
 import Input from "@/components/ui/input";
 import Label from "@/components/ui/label";
-import { useForm } from "react-hook-form";
-import { FaMobileRetro } from "react-icons/fa6";
-import { useCreateTutor, useGetTutorProfile } from "@/api/tutors/tutors.hooks";
-import { showToaster } from "@/helpers/useToaster";
+import PrimaryButton from "@/components/ui/PrimaryButton";
+import { tutorProfileBreadTree } from "@/helpers/breadCrumbs";
 import { handleErrorMessage } from "@/helpers/handleErrorMessage";
-import TimezoneSelect from "react-timezone-select"
-import { Checkbox } from "@heroui/react";
-import { useGetCountries } from "@/api/utils/utils.hooks";
-import Select from "react-select";
+import { showToaster } from "@/helpers/useToaster";
 import { useAuth } from "@/hooks/useAuth";
-import ProfileSkeleton from "@/components/loaderSeketons/ProfileSkeleton";
+import { Checkbox } from "@heroui/react";
+import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
+import { useForm } from "react-hook-form";
+import { BiPaperPlane, BiSolidEdit } from "react-icons/bi";
+import { FaMobileRetro } from "react-icons/fa6";
+import { GiSkills } from "react-icons/gi";
+import { LiaHourglassStartSolid } from "react-icons/lia";
+import { LuContactRound, LuMap } from "react-icons/lu";
+import { MdOutlineCall, MdOutlinePinDrop } from "react-icons/md";
+import { RiMoneyDollarBoxLine } from "react-icons/ri";
+import { TbClockHour4 } from "react-icons/tb";
+import Select from "react-select";
+import TimezoneSelect from "react-timezone-select";
+import SkillsArray from "./SkillsArray";
 
 const TutorProfileMain = () => {
   const data = {};
@@ -41,7 +42,6 @@ const TutorProfileMain = () => {
     "mobile": "",
     "phone": "",
     "street": "",
-    "state": null,
     "town": "",
     "country": null,
     "postcode": "",
@@ -50,20 +50,23 @@ const TutorProfileMain = () => {
     "default_rate": 0,
     "receive_service_notifications": true,
     "calendar_colour": "LimeGreen",
-    "send_emails": true
+    "send_emails": true,
+    "skills": ["6653425"],
   }), []);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    control,
     reset,
     setValue,
-    getValues
+    getValues,
+    watch
   } = useForm({
     defaultValues
   });
+
+  const skillsArray = watch("skills");
 
   const { data: countries, isPending: isLoadingCountries } = useGetCountries();
 
@@ -89,18 +92,31 @@ const TutorProfileMain = () => {
     }
   };
 
+  const [skillInput, setSkillInput] = useState("");
+  const handleAddSkill = () => {
+    if (skillInput.trim() === "") return;
+    setValue("skills", [...getValues("skills") || [], skillInput]);
+    setSkillInput("");
+  };
+
+  const handleDeleteSkill = (index) => {
+    const updatedSkills = [...(getValues("skills") || [])];
+    updatedSkills.splice(index, 1);
+    setValue("skills", updatedSkills);
+  }
+
   useEffect(() => {
     if (defaultValues) {
       setSelectedTimezone(defaultValues.timezone);
 
-      const tutorCountry = countries?.data?.find(country => country.name === tutorProfile?.result?.country.split(" ")[0])
+      const tutorCountry = tutorProfile?.result?.country.split(" ")[0];
+      const matchedCountry = countries?.data?.find(country => country.name === tutorCountry);
       setSelectedCountry({
-        value: tutorCountry?.id,
-        label: tutorCountry?.name
+        value: matchedCountry?.id,
+        label: matchedCountry?.name
       });
-      console.log({tutorCountry})
     }
-  }, [defaultValues]);
+  }, [defaultValues, countries, tutorProfile]);
 
   return (
     <>
@@ -111,7 +127,10 @@ const TutorProfileMain = () => {
           <PrimaryButton
             onPress={() => {
               setIsEditing(true);
-              reset(tutorProfile?.result);
+              reset({
+                ...tutorProfile?.result,
+                country: selectedCountry ? selectedCountry.value : null,
+              });
             }}
             startContent={<BiSolidEdit size={18} />}
             color="primary"
@@ -187,7 +206,7 @@ const TutorProfileMain = () => {
 
               <div>
                 <p className="flex items-center gap-2 my-1">
-                  <BiPaperPlane size={18} className="flex-shrink-0" />
+                  <BiPaperPlane size={18} className="shrink-0" />
                   {isEditing ? (
                     <Input
                       {...register("email")}
@@ -195,13 +214,15 @@ const TutorProfileMain = () => {
                       className={errors.email ? "border-red-500" : ""}
                     />
                   ) : (
-                    <span className="line-clamp-1">james_higgins@example.com</span>
+                    <span className="line-clamp-1">
+                      {tutorProfile?.result?.email}
+                    </span>
                   )}
 
                 </p>
 
                 <p className="flex items-center gap-2 my-1">
-                  <FaMobileRetro size={18} className="flex-shrink-0" />
+                  <FaMobileRetro size={18} className="shrink-0" />
                   {isEditing ? (
                     <Input
                       {...register("mobile")}
@@ -209,13 +230,15 @@ const TutorProfileMain = () => {
                       className={errors.mobile ? "border-red-500" : ""}
                     />
                   ) : (
-                    <span>07842 485 204</span>
+                    <span>
+                      {tutorProfile?.result?.mobile}
+                    </span>
                   )}
                 </p>
 
                 {isEditing ? (
                   <p className="flex items-center gap-2 my-1">
-                    <MdOutlineCall size={18} className="flex-shrink-0" />
+                    <MdOutlineCall size={18} className="shrink-0" />
                     <Input
                       {...register("phone")}
                       placeholder="Enter phone number"
@@ -225,14 +248,16 @@ const TutorProfileMain = () => {
                 ) : (
                   data?.phone && (
                     <p className="flex items-center gap-2 my-1">
-                      <MdOutlineCall size={18} className="flex-shrink-0" />
-                      <span>07842 485 204</span>
+                      <MdOutlineCall size={18} className="shrink-0" />
+                      <span>
+                        {tutorProfile?.result?.phone}
+                      </span>
                     </p>
                   )
                 )}
 
                 <div className="flex items-center gap-2 my-1">
-                  <MdOutlinePinDrop size={18} className="flex-shrink-0" />
+                  <MdOutlinePinDrop size={18} className="shrink-0" />
                   {isEditing ? (
                     <div>
                       <div>
@@ -241,15 +266,6 @@ const TutorProfileMain = () => {
                           {...register("street")}
                           placeholder="Enter street address"
                           className={errors.street ? "border-red-500" : ""}
-                        />
-                      </div>
-
-                      <div>
-                        <Label>State</Label>
-                        <Input
-                          {...register("state")}
-                          placeholder="Enter street address"
-                          className={errors.state ? "border-red-500" : ""}
                         />
                       </div>
 
@@ -272,12 +288,12 @@ const TutorProfileMain = () => {
                       </div>
                     </div>
                   ) : (
-                    <span>{tutorProfile?.result?.street}, {tutorProfile?.result?.town}, {tutorProfile?.result?.state}, {tutorProfile?.result?.postcode}</span>
+                    <span>{tutorProfile?.result?.street}, {tutorProfile?.result?.town}, {tutorProfile?.result?.postcode}</span>
                   )}
                 </div>
 
                 <div className="flex items-center gap-2 my-1">
-                  <LuMap size={18} className="flex-shrink-0" />
+                  <LuMap size={18} className="shrink-0" />
                   {isEditing ? (
                     <div className="w-full">
                       <Label>Country</Label>
@@ -289,6 +305,7 @@ const TutorProfileMain = () => {
                           }))}
                           onChange={(option) => {
                             setValue("country", option.value);
+                            setSelectedCountry(option);
                           }}
                           value={selectedCountry}
                           className={errors.country ? "border-red-500" : ""}
@@ -297,7 +314,9 @@ const TutorProfileMain = () => {
                         />}
                     </div>
                   ) : (
-                    <span>United Kingdom (GB)</span>
+                    <span>
+                      {tutorProfile?.result?.country}
+                    </span>
                   )}
                 </div>
               </div>
@@ -310,13 +329,26 @@ const TutorProfileMain = () => {
                 Skills
               </h4>
 
-              <div className="flex items-center gap-2 my-2">
-                <Input className="flex-1" />
-                <PrimaryButton>Add To List</PrimaryButton>
-              </div>
+              {isEditing && (
+                <div className="flex items-center gap-2 my-2">
+                  <Input
+                    className="flex-1"
+                    type="text"
+                    placeholder="Enter a skill to add"
+                    onChange={(e) => setSkillInput(e.target.value)}
+                    value={skillInput}
+                  />
+                  <PrimaryButton type="button" onPress={handleAddSkill}>Add To List</PrimaryButton>
+                </div>
+              )}
 
-              <div className="bg-slate-100 border-slate-200 rounded-md p-5">
-                skills list
+
+              <div className="bg-slate-50 border-slate-100 rounded py-2 px-3 flex flex-wrap gap-2">
+                <SkillsArray
+                  skillsArray={skillsArray}
+                  handleDeleteSkill={handleDeleteSkill}
+                  isEditing={isEditing}
+                />
               </div>
             </Card>
 
@@ -327,7 +359,7 @@ const TutorProfileMain = () => {
               </h4>
 
               <p className="flex items-center gap-2 my-1">
-                <TbClockHour4 size={18} className="flex-shrink-0" />
+                <TbClockHour4 size={18} className="shrink-0" />
                 <span className="font-semibold">
                   {isEditing ? (
                     <Input
