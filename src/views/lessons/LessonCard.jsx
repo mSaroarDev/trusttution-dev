@@ -6,7 +6,7 @@ import { IoChevronForwardOutline } from "react-icons/io5";
 // import { detectChar } from "../../../utils/detectChar";
 import ServiceDetails from "./ServiceDetails";
 
-const LessonCard = ({ data, isLogged = false }) => {
+const LessonCard = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
 

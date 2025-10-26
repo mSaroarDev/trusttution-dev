@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createService, getServices } from "./services.api";
+import { createService, getAService, getServices } from "./services.api";
 
 export const useGetServices = () => {
   const query = useQuery({
@@ -20,6 +20,18 @@ export const useCreateService = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["services"] });
     }
+  })
+
+  return data;
+};
+
+export const useGetAService = (id) => {
+  const data = useQuery({
+    queryKey: ["services", id],
+    queryFn: ()=> getAService(id),
+    staleTime: 5 * 60 * 1000,
+    refetchOnMount: true,
+    refetchOnWindowFocus: false,
   })
 
   return data;
