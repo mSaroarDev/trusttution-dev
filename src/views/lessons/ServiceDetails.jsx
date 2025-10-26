@@ -3,7 +3,7 @@ import { Spinner } from "@heroui/react";
 import { BiSolidEdit } from "react-icons/bi";
 import { BsTrash3Fill } from "react-icons/bs";
 
-const ServiceDetails = ({ data }) => {
+const ServiceDetails = ({ data, setShowNewServiceModal }) => {
   const { data: serviceData, isPending } = useGetAService(data?.id);
   const service = serviceData?.data;
 
@@ -18,11 +18,14 @@ const ServiceDetails = ({ data }) => {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-end gap-2">
-        <button className="more-action-button">
+        <button
+          onClick={()=> {
+            setShowNewServiceModal(true)
+          }}
+          className="more-action-button flex items-center gap-1"
+        >
           <BiSolidEdit size={18} />
-        </button>
-        <button className="more-action-button">
-          <BsTrash3Fill size={18} className="hover:text-red-500" />
+          <span>Edit Service</span>
         </button>
       </div>
 

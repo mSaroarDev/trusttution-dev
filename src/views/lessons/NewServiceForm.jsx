@@ -1,15 +1,19 @@
-import { useCreateService } from "@/api/services/services.hooks";
+import { useCreateService, useUpdateService } from "@/api/services/services.hooks";
 import Input from "@/components/ui/input";
 import Label from "@/components/ui/label";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { handleErrorMessage } from "@/helpers/handleErrorMessage";
 import { showToaster } from "@/helpers/useToaster";
 import { Alert } from "@heroui/react";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import Select from "react-select"
 
-const NewServiceForm = ({setShowNewServiceModal}) => {
+const NewServiceForm = ({
+  setShowNewServiceModal,
+  setEditableService,
+  editableService
+}) => {
   const defaultValues = useMemo(() => {
     return {
       name: "",
@@ -30,11 +34,17 @@ const NewServiceForm = ({setShowNewServiceModal}) => {
     defaultValues,
   });
 
-  const {mutateAsync: createService, isPending} = useCreateService();
+  const { mutateAsync: createService, isPending } = useCreateService();
+  const { mutateAsync: updateService, isPending: isUpdating } = useUpdateService();
   const onSubmit = async (data) => {
     try {
-      const res = await createService(data);
-      if(res?.success){
+      const res = editableService ?
+        await updateService({
+          id: editableService?.id,
+          ...data
+        })
+        : await createService(data);
+      if (res?.success) {
         showToaster("success", res?.message || "Service created successfully");
         reset(defaultValues);
         setShowNewServiceModal(false);
@@ -43,6 +53,16 @@ const NewServiceForm = ({setShowNewServiceModal}) => {
       showToaster("error", handleErrorMessage(error));
     }
   };
+
+  useEffect(() => {
+    if (editableService !== null) {
+      setValue("name", editableService?.name);
+      setValue("description", editableService?.description);
+      setValue("dft_charge_rate", editableService?.dft_charge_rate);
+      setValue("dft_contractor_rate", editableService?.dft_contractor_rate);
+      setValue("dft_charge_type", editableService?.dft_charge_type);
+    }
+  }, [setEditableService, editableService, setValue]);
 
   return (
     <>
@@ -56,7 +76,7 @@ const NewServiceForm = ({setShowNewServiceModal}) => {
             maxLength={100}
             {...register("name", { required: true, maxLength: 100 })}
             placeholder="Enter the service name"
-            className={errors.name ? "border-red-500" : "" }
+            className={errors.name ? "border-red-500" : ""}
           />
         </div>
 
@@ -66,7 +86,7 @@ const NewServiceForm = ({setShowNewServiceModal}) => {
             type="number"
             {...register("dft_charge_rate", { required: true })}
             placeholder="eg: 50"
-            className={errors.dft_charge_rate ? "border-red-500" : "" }
+            className={errors.dft_charge_rate ? "border-red-500" : ""}
           />
         </div>
 
@@ -76,7 +96,7 @@ const NewServiceForm = ({setShowNewServiceModal}) => {
             type="number"
             {...register("dft_contractor_rate", { required: true })}
             placeholder="eg: 30"
-            className={errors.dft_contractor_rate ? "border-red-500" : "" }
+            className={errors.dft_contractor_rate ? "border-red-500" : ""}
           />
         </div>
 
@@ -87,26 +107,26 @@ const NewServiceForm = ({setShowNewServiceModal}) => {
               { value: 'hourly', label: 'Hourly' },
             ]}
             defaultValue={{ value: 'hourly', label: 'Hourly' }}
-            onChange={(option)=> {
+            onChange={(option) => {
               setValue("dft_charge_type", option.value);
             }}
-            className={errors.dft_charge_type ? "border-red-500" : "" }
+            className={errors.dft_charge_type ? "border-red-500" : ""}
           />
         </div>
 
         <div>
           <Label>Service Description (max 500 characters)</Label>
           <textarea
-            className={`w-full border border-gray-300 rounded-md p-2 mt-1 hind-siliguri-regular ${errors.description ? "border-red-500" : "" }`}
+            {...register("description", { required: true, maxLength: 500 })}
+            className={`w-full border border-gray-300 rounded-md p-2 mt-1 hind-siliguri-regular ${errors.description ? "border-red-500" : ""}`}
             rows={4}
             maxLength={500}
             placeholder="Enter the service description"
-            {...register("description", { required: true, maxLength: 500 })}
           ></textarea>
         </div>
 
-        <PrimaryButton isLoading={isPending} type="submit" color="primary" className="mt-1">
-          Create Service
+        <PrimaryButton isLoading={isPending || isUpdating} type="submit" color="primary" className="mt-1">
+          {editableService ? "Update Service" : "Create Service"}
         </PrimaryButton>
       </form>
     </>

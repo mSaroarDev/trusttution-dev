@@ -12,6 +12,7 @@ import NewServiceForm from "./NewServiceForm";
 const LessonsMain = () => {
   const {data: services} = useGetServices();
   const [showNewServiceModal, setShowNewServiceModal] = useState(false);
+  const [editableService, setEditableService] = useState(null);
 
     return (
         <>
@@ -19,18 +20,23 @@ const LessonsMain = () => {
             <BreadcrumbsComponent breadTree={lessondTree} />
 
             <PrimaryButton onPress={()=> setShowNewServiceModal(true)} startContent={<GoPlus size={18} />} color="primary">
-              Add New Lesson
+              Add New Service
             </PrimaryButton>
           </div>
 
           <div className="flex items-center gap-2 mt-5">
             <div className="w-4 h-4 bg-brand rounded"></div>
-            <h4 className="font-medium text-base">My Lessons</h4>
+            <h4 className="font-medium text-base">My Services</h4>
           </div>
 
           <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
             {services?.data?.map((service, index)=> (
-              <LessonCard key={index} data={service} isLogged={true} />
+              <LessonCard 
+                key={index} 
+                data={service}
+                setShowNewServiceModal={setShowNewServiceModal}
+                setEditableService={setEditableService} 
+              />
             ))}
           </div>
 
@@ -39,10 +45,12 @@ const LessonsMain = () => {
               isOpen={showNewServiceModal}
               onOpenChange={() => setShowNewServiceModal(false)}
               size="lg"
-              title="Add New Service"
+              title={editableService ? "Edit Service" : "Add New Service"}
             >
               <NewServiceForm 
                 setShowNewServiceModal={setShowNewServiceModal}
+                editableService={editableService}
+                setEditableService={setEditableService}
               />
             </PrimaryModal>
           )}

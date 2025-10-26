@@ -14,3 +14,9 @@ export const createService = async (serviceData) => {
   const res = await request.post("/services/create", serviceData);
   return res?.data;
 };
+
+export const updateAService = async (payload) => {
+  const {id, ...data} = payload;
+  const res = await request.put("/services/update/" + id, data);
+  return res?.data;
+};
