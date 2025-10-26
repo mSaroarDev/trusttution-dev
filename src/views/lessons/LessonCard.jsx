@@ -1,14 +1,9 @@
 import PrimaryModal from "@/components/PrimaryModal";
 import RenderStatus from "@/components/RenderStatus";
-import PrimaryButton from "@/components/ui/PrimaryButton";
-import Link from "next/link";
 import { useState } from "react";
 import { IoChevronForwardOutline } from "react-icons/io5";
-import { MdOutlineArrowForward } from "react-icons/md";
-import { RiMoneyDollarBoxLine } from "react-icons/ri";
 // import convertToBanglaNumber from "../../../utils/convertNumbertoBangla";
 // import { detectChar } from "../../../utils/detectChar";
-import { TiStopwatch } from "react-icons/ti";
 import ServiceDetails from "./ServiceDetails";
 
 const LessonCard = ({ data, isLogged = false }) => {
@@ -19,7 +14,7 @@ const LessonCard = ({ data, isLogged = false }) => {
     <>
       <div
         // href={isLogged ? `/user/courses/${data?._id}` : `/course/details/${data?._id}`}
-        className="px-2 pt-2 rounded-xl bg-white dark:bg-controlled border border-slate-200 dark:border-gray-900 hover:shadow-md transition-all duration-150 flex flex-col h-full"
+        className="px-2 pt-2 rounded-xl bg-white dark:bg-controlled border border-slate-200 dark:border-gray-900 hover:shadow-md hover:scale-[102%] transition-all duration-150 flex flex-col h-full cursor-pointer"
         onClick={() => {
           setShowModal(true)
           setSelectedService(data)
@@ -35,10 +30,6 @@ const LessonCard = ({ data, isLogged = false }) => {
         </figure>
         <div className="p-4 hind-siliguri-regular flex flex-col flex-1">
           <div className="flex-1">
-            <div className="flex items-center justify-between">
-              {/* <RenderStatus status={data?.status} /> */}
-            </div>
-
             <div className="flex items-start gap-2">
               <div className="bg-brand/10 w-14 h-14 shrink-0 rounded-sm"></div>
               <div>
@@ -50,10 +41,6 @@ const LessonCard = ({ data, isLogged = false }) => {
           </div>
 
           <div className="mt-2">
-            {/* <div className="flex items-center justify-between">
-
-            </div> */}
-
             <div className="pt-2 mt-3">
               <div className="text-xl flex items-center justify-between">
                 <p>${data?.dft_charge_rate}<span className="text-sm">/hour</span></p>
@@ -83,7 +70,7 @@ const LessonCard = ({ data, isLogged = false }) => {
           size="3xl"
           title="Service Details"
         >
-          <ServiceDetails 
+          <ServiceDetails
             data={selectedService}
           />
         </PrimaryModal>

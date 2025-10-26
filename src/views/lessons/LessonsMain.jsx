@@ -1,22 +1,26 @@
 "use client";
+import { useState } from "react";
 import BreadcrumbsComponent from "@/components/Breadcrumbs";
 import { lessondTree } from "@/helpers/breadCrumbs";
-import { Button } from "@heroui/react";
 import { GoPlus } from "react-icons/go";
 import LessonCard from "./LessonCard";
 import { useGetServices } from "@/api/services/services.hooks";
+import PrimaryButton from "@/components/ui/PrimaryButton";
+import PrimaryModal from "@/components/PrimaryModal";
+import NewServiceForm from "./NewServiceForm";
 
 const LessonsMain = () => {
-  const {data: services, isPending} = useGetServices();
+  const {data: services} = useGetServices();
+  const [showNewServiceModal, setShowNewServiceModal] = useState(false);
 
     return (
         <>
           <div className="flex items-center justify-between">
             <BreadcrumbsComponent breadTree={lessondTree} />
 
-            <Button startContent={<GoPlus size={18} />} color="primary">
+            <PrimaryButton onPress={()=> setShowNewServiceModal(true)} startContent={<GoPlus size={18} />} color="primary">
               Add New Lesson
-            </Button>
+            </PrimaryButton>
           </div>
 
           <div className="flex items-center gap-2 mt-5">
@@ -29,6 +33,19 @@ const LessonsMain = () => {
               <LessonCard key={index} data={service} isLogged={true} />
             ))}
           </div>
+
+          {showNewServiceModal && (
+            <PrimaryModal
+              isOpen={showNewServiceModal}
+              onOpenChange={() => setShowNewServiceModal(false)}
+              size="lg"
+              title="Add New Service"
+            >
+              <NewServiceForm 
+                setShowNewServiceModal={setShowNewServiceModal}
+              />
+            </PrimaryModal>
+          )}
         </>
     );
 };
