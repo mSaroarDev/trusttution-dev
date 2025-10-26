@@ -1,8 +1,13 @@
 
 import Swal from 'sweetalert2';
 
-export const showConfirmModal = ({ title, text, confirmText, cancelText, func }) => {
-
+export const showConfirmModal = ({ 
+  title, 
+  text, 
+  confirmText, 
+  cancelText, 
+  func 
+}) => {
   const renderText = () => {
     switch (text) {
       case "delete":

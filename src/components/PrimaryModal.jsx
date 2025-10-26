@@ -17,7 +17,8 @@ export default function PrimaryModal({
   submitButtonText = "Action",
   submitButtonFunction = () => {},
   size = "md",
-  title
+  title,
+  ...rest
 }) {
   // const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
@@ -28,6 +29,7 @@ export default function PrimaryModal({
         onOpenChange={onOpenChange}
         size={size}
         className="max-h-[85vh]"
+        {...rest}
       >
         <ModalContent>
           {(onClose) => (

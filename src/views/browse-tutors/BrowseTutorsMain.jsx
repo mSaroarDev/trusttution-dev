@@ -9,8 +9,7 @@ import { LuUserRoundSearch } from "react-icons/lu";
 import { useGetTutors } from "@/api/tutors/tutors.hooks";
 
 const BrowseTutorsMain = () => {
-  const { data: tutors, isPending } = useGetTutors();
-  console.log('tutors ==>', tutors);
+  const { data: tutors } = useGetTutors();
 
   return (
     <>

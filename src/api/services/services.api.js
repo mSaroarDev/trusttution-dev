@@ -27,3 +27,9 @@ export const addTutorToService = async (payload) => {
   const res = await request.post(`/services/add-contractor/${serviceId}`, data);
   return res.data;
 };
+
+export const deleteTutorFromAService = async (payload) => {
+  const {serviceId, data} = payload;
+  const res = await request.post("/services/remove-contractor/" + serviceId, data);
+  return res?.data;
+};

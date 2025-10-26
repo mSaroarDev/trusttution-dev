@@ -1,17 +1,47 @@
 "use client";
-import { useGetAService } from "@/api/services/services.hooks";
+import { useGetAService, useRemoveTutorFromService } from "@/api/services/services.hooks";
 import PrimaryModal from "@/components/PrimaryModal";
 import { Spinner } from "@heroui/react";
 import { useState } from "react";
 import { BiSolidEdit } from "react-icons/bi";
 import { LuUserRoundPlus } from "react-icons/lu";
 import TutorAddToServiceForm from "./TutorAddToServiceForm";
+import { BsTrash3Fill } from "react-icons/bs";
+import { showConfirmModal } from "@/helpers/showConfirmModal";
+import { showToaster } from "@/helpers/useToaster";
+import { handleErrorMessage } from "@/helpers/handleErrorMessage";
+
 
 const ServiceDetails = ({ data, setShowNewServiceModal }) => {
   const { data: serviceData, isPending } = useGetAService(data?.id);
   const service = serviceData?.data;
 
+  const { mutateAsync: removeTutor } = useRemoveTutorFromService();
+
   const [addTutorModalOpen, setAddTutorModalOpen] = useState(false);
+
+  const handleRemove = (tutorId) => {
+    showConfirmModal({
+      title: "Remove Tutor from Service",
+      text: "Are you sure you want to remove this tutor from the service?",
+      func: async () => {
+        try {
+          const res = await removeTutor({
+            serviceId: service?.id,
+            data: {
+              contractor: tutorId
+            }
+          });
+
+          if (res?.success) {
+            showToaster("success", "Tutor removed from service successfully.");
+          }
+        } catch (error) {
+          showToaster("error", handleErrorMessage(error) || "Failed to remove tutor from service.");
+        }
+      }
+    })
+  };
 
   if (isPending) {
     return (
@@ -25,17 +55,17 @@ const ServiceDetails = ({ data, setShowNewServiceModal }) => {
     <div className="space-y-4">
       <div className="flex items-center justify-end gap-2">
         <button
-          onClick={()=> {
+          onClick={() => {
             setShowNewServiceModal(true)
           }}
           className="more-action-button flex items-center gap-1 px-3"
         >
-          <BiSolidEdit size={18} />
+          <BiSolidEdit size={16} />
           <span>Edit Service</span>
         </button>
 
         <button
-          onClick={()=> {
+          onClick={() => {
             setAddTutorModalOpen(true)
           }}
           className="more-action-button flex items-center gap-1 px-3 bg-primary/10 text-primary"
@@ -88,7 +118,10 @@ const ServiceDetails = ({ data, setShowNewServiceModal }) => {
           <h4 className="font-medium mb-1">Assigned Tutors/Contractors</h4>
           <ul className="list-disc ml-4 text-sm text-gray-700">
             {service.conjobs.map((c, i) => (
-              <li key={i}>{c.name} ({c.contractor_permissions})</li>
+              <li key={i} className="flex items-center gap-1">
+                {c.name} (${c.pay_rate})
+                <BsTrash3Fill onClick={() => handleRemove(c?.contractor)} size={16} className="cursor-pointer -mt-1" />
+              </li>
             ))}
           </ul>
         </div>
@@ -102,7 +135,7 @@ const ServiceDetails = ({ data, setShowNewServiceModal }) => {
             size="2xl"
             title="Add Tutor to Service"
           >
-            <TutorAddToServiceForm 
+            <TutorAddToServiceForm
               serviceId={service?.id}
               setAddTutorModalOpen={setAddTutorModalOpen}
             />

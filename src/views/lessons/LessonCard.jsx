@@ -58,6 +58,7 @@ const LessonCard = ({ data, setShowNewServiceModal, setEditableService }) => {
           onOpenChange={() => setShowModal(false)}
           size="3xl"
           title="Service Details"
+          isDismissable={false}
         >
           <ServiceDetails
             data={selectedService}

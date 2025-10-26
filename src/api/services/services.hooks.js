@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { addTutorToService, createService, getAService, getServices, updateAService } from "./services.api";
+import { addTutorToService, createService, deleteTutorFromAService, getAService, getServices, updateAService } from "./services.api";
 
 export const useGetServices = () => {
   const query = useQuery({
@@ -55,6 +55,19 @@ export const useAddTutorToService = () => {
 
   const data = useMutation({
     mutationFn: addTutorToService,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["services"] });
+    }
+  })
+
+  return data;
+};
+
+export const useRemoveTutorFromService = () => {
+  const queryClient = useQueryClient();
+
+  const data = useMutation({
+    mutationFn: deleteTutorFromAService,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["services"] });
     }
