@@ -27,6 +27,7 @@ export default function PrimaryModal({
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         size={size}
+        className="max-h-[85vh]"
       >
         <ModalContent>
           {(onClose) => (
@@ -34,7 +35,7 @@ export default function PrimaryModal({
               <ModalHeader className="flex flex-col gap-1">
                 <h3 className="text-lg font-semibold hind-siliguri-600">{title}</h3>
               </ModalHeader>
-              <ModalBody className="mb-5">
+              <ModalBody className="mb-5 w-full h-full overflow-y-auto">
                 {children}
               </ModalBody>
               {showFooter && (

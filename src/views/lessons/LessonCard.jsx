@@ -56,7 +56,6 @@ const LessonCard = ({ data, setShowNewServiceModal, setEditableService }) => {
         <PrimaryModal
           isOpen={showModal}
           onOpenChange={() => setShowModal(false)}
-          showFooter
           size="3xl"
           title="Service Details"
         >

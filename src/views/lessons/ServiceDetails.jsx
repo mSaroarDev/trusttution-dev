@@ -1,11 +1,17 @@
+"use client";
 import { useGetAService } from "@/api/services/services.hooks";
+import PrimaryModal from "@/components/PrimaryModal";
 import { Spinner } from "@heroui/react";
+import { useState } from "react";
 import { BiSolidEdit } from "react-icons/bi";
-import { BsTrash3Fill } from "react-icons/bs";
+import { LuUserRoundPlus } from "react-icons/lu";
+import TutorAddToServiceForm from "./TutorAddToServiceForm";
 
 const ServiceDetails = ({ data, setShowNewServiceModal }) => {
   const { data: serviceData, isPending } = useGetAService(data?.id);
   const service = serviceData?.data;
+
+  const [addTutorModalOpen, setAddTutorModalOpen] = useState(false);
 
   if (isPending) {
     return (
@@ -22,10 +28,20 @@ const ServiceDetails = ({ data, setShowNewServiceModal }) => {
           onClick={()=> {
             setShowNewServiceModal(true)
           }}
-          className="more-action-button flex items-center gap-1"
+          className="more-action-button flex items-center gap-1 px-3"
         >
           <BiSolidEdit size={18} />
           <span>Edit Service</span>
+        </button>
+
+        <button
+          onClick={()=> {
+            setAddTutorModalOpen(true)
+          }}
+          className="more-action-button flex items-center gap-1 px-3 bg-primary/10 text-primary"
+        >
+          <LuUserRoundPlus size={18} />
+          <span>Add Tutor to Service</span>
         </button>
       </div>
 
@@ -69,13 +85,29 @@ const ServiceDetails = ({ data, setShowNewServiceModal }) => {
 
       {service?.conjobs?.length > 0 && (
         <div>
-          <h4 className="font-medium mb-1">Contractors</h4>
+          <h4 className="font-medium mb-1">Assigned Tutors/Contractors</h4>
           <ul className="list-disc ml-4 text-sm text-gray-700">
             {service.conjobs.map((c, i) => (
               <li key={i}>{c.name} ({c.contractor_permissions})</li>
             ))}
           </ul>
         </div>
+      )}
+
+      {addTutorModalOpen && (
+        <>
+          <PrimaryModal
+            isOpen={addTutorModalOpen}
+            onOpenChange={() => setAddTutorModalOpen(false)}
+            size="2xl"
+            title="Add Tutor to Service"
+          >
+            <TutorAddToServiceForm 
+              serviceId={service?.id}
+              setAddTutorModalOpen={setAddTutorModalOpen}
+            />
+          </PrimaryModal>
+        </>
       )}
     </div>
   );

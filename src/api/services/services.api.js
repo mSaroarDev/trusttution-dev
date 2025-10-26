@@ -20,3 +20,10 @@ export const updateAService = async (payload) => {
   const res = await request.put("/services/update/" + id, data);
   return res?.data;
 };
+
+
+export const addTutorToService = async (payload) => {
+  const { serviceId, data } = payload;
+  const res = await request.post(`/services/add-contractor/${serviceId}`, data);
+  return res.data;
+};
