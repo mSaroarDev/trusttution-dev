@@ -7,7 +7,7 @@ import { showToaster } from "@/helpers/useToaster";
 import { Alert } from "@heroui/react";
 import { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
-import Select from "react-select"
+import Select from "react-select";
 
 const NewServiceForm = ({
   setShowNewServiceModal,

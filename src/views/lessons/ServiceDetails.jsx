@@ -10,6 +10,8 @@ import { BsTrash3Fill } from "react-icons/bs";
 import { showConfirmModal } from "@/helpers/showConfirmModal";
 import { showToaster } from "@/helpers/useToaster";
 import { handleErrorMessage } from "@/helpers/handleErrorMessage";
+import { useAuth } from "@/hooks/useAuth";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 
 
 const ServiceDetails = ({ data, setShowNewServiceModal }) => {
@@ -19,6 +21,8 @@ const ServiceDetails = ({ data, setShowNewServiceModal }) => {
   const { mutateAsync: removeTutor } = useRemoveTutorFromService();
 
   const [addTutorModalOpen, setAddTutorModalOpen] = useState(false);
+
+  const { isTutor, isStudent } = useAuth();
 
   const handleRemove = (tutorId) => {
     showConfirmModal({
@@ -53,27 +57,29 @@ const ServiceDetails = ({ data, setShowNewServiceModal }) => {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-end gap-2">
-        <button
-          onClick={() => {
-            setShowNewServiceModal(true)
-          }}
-          className="more-action-button flex items-center gap-1 px-3"
-        >
-          <BiSolidEdit size={16} />
-          <span>Edit Service</span>
-        </button>
+      {isTutor && (
+        <div className="flex items-center justify-end gap-2">
+          <button
+            onClick={() => {
+              setShowNewServiceModal(true)
+            }}
+            className="more-action-button flex items-center gap-1 px-3"
+          >
+            <BiSolidEdit size={16} />
+            <span>Edit Service</span>
+          </button>
 
-        <button
-          onClick={() => {
-            setAddTutorModalOpen(true)
-          }}
-          className="more-action-button flex items-center gap-1 px-3 bg-primary/10 text-primary"
-        >
-          <LuUserRoundPlus size={18} />
-          <span>Add Tutor to Service</span>
-        </button>
-      </div>
+          <button
+            onClick={() => {
+              setAddTutorModalOpen(true)
+            }}
+            className="more-action-button flex items-center gap-1 px-3 bg-primary/10 text-primary"
+          >
+            <LuUserRoundPlus size={18} />
+            <span>Add Tutor to Service</span>
+          </button>
+        </div>
+      )}
 
       <div className="space-y-1">
         <h3 className="text-lg font-semibold">{service?.name}</h3>
@@ -120,10 +126,18 @@ const ServiceDetails = ({ data, setShowNewServiceModal }) => {
             {service.conjobs.map((c, i) => (
               <li key={i} className="flex items-center gap-1">
                 {c.name} (${c.pay_rate})
-                <BsTrash3Fill onClick={() => handleRemove(c?.contractor)} size={16} className="cursor-pointer -mt-1" />
+                {isTutor && (
+                  <BsTrash3Fill onClick={() => handleRemove(c?.contractor)} size={16} className="cursor-pointer -mt-1" />
+                )}
               </li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {isStudent && (
+        <div>
+          <PrimaryButton className="w-full mt-5">Book Appointment</PrimaryButton>
         </div>
       )}
 
