@@ -12,6 +12,7 @@ import { showToaster } from "@/helpers/useToaster";
 import { handleErrorMessage } from "@/helpers/handleErrorMessage";
 import { useAuth } from "@/hooks/useAuth";
 import PrimaryButton from "@/components/ui/PrimaryButton";
+import BookAppointmentForm from "./BookAppointmentForm";
 
 
 const ServiceDetails = ({ data, setShowNewServiceModal }) => {
@@ -19,10 +20,11 @@ const ServiceDetails = ({ data, setShowNewServiceModal }) => {
   const service = serviceData?.data;
 
   const { mutateAsync: removeTutor } = useRemoveTutorFromService();
-
   const [addTutorModalOpen, setAddTutorModalOpen] = useState(false);
 
   const { isTutor, isStudent } = useAuth();
+
+  const [bookingModal, setBookingModal] = useState(false);
 
   const handleRemove = (tutorId) => {
     showConfirmModal({
@@ -53,7 +55,7 @@ const ServiceDetails = ({ data, setShowNewServiceModal }) => {
         <Spinner size="lg" />
       </div>
     )
-  }
+  };
 
   return (
     <div className="space-y-4">
@@ -137,7 +139,7 @@ const ServiceDetails = ({ data, setShowNewServiceModal }) => {
 
       {isStudent && (
         <div>
-          <PrimaryButton className="w-full mt-5">Book Appointment</PrimaryButton>
+          <PrimaryButton onPress={()=> setBookingModal(true)} className="w-full mt-5">Book Appointment</PrimaryButton>
         </div>
       )}
 
@@ -155,6 +157,17 @@ const ServiceDetails = ({ data, setShowNewServiceModal }) => {
             />
           </PrimaryModal>
         </>
+      )}
+
+      {bookingModal && (
+        <PrimaryModal
+          isOpen={bookingModal}
+          onOpenChange={() => setBookingModal(false)}
+          size="xl"
+          title="Book Appointment"
+        >
+          <BookAppointmentForm />
+        </PrimaryModal>
       )}
     </div>
   );
