@@ -1,11 +1,10 @@
 
 import {
   Modal,
-  ModalContent,
-  ModalHeader,
   ModalBody,
+  ModalContent,
   ModalFooter,
-  useDisclosure,
+  ModalHeader
 } from "@heroui/react";
 import { Button } from "./ui/button";
 
@@ -32,7 +31,7 @@ export default function PrimaryModal({
         {...rest}
       >
         <ModalContent>
-          {(onClose) => (
+          {() => (
             <>
               <ModalHeader className="flex flex-col gap-1">
                 <h3 className="text-lg font-semibold hind-siliguri-600">{title}</h3>

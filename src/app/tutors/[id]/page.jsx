@@ -5,14 +5,15 @@ import RenderStatus from "@/components/RenderStatus";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Spinner } from "@heroui/react";
-import { Award, BookOpen, Calendar, CheckCircle, Clock, GraduationCap, MapPin, MessageCircle, Star } from "lucide-react";
+import { Calendar, Clock, GraduationCap, MapPin, MessageCircle, Star } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
 export default function TutorProfile() {
   const { tutorId } = useParams();
   const { data: tutor, isPending } = useGetTutorProfile(tutorId);
-  const { data: availability, isPending: isLoadingAvailability } = useGetTutorAvailability(tutorId);
+  const { data: availability } = useGetTutorAvailability(tutorId);
 
   function isAvailableNow() {
     const slots = availability?.result || [];
@@ -68,11 +69,14 @@ export default function TutorProfile() {
             <Card>
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row gap-6">
-                  <img
-                    src={tutor?.result?.photo || "/placeholder.svg"}
-                    alt={tutor?.result?.name}
-                    className="w-32 h-32 rounded-full object-cover mx-auto md:mx-0 border-4 border-primary/20"
-                  />
+                  <div className="w-32 h-32 rounded-full object-cover mx-auto md:mx-0 border-4 border-primary/20 relative overflow-hidden">
+                    <Image 
+                      src={tutor?.result?.photo || "/placeholder.svg"}
+                      alt={tutor?.result?.name}
+                      fill
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <div className="flex-1 text-center md:text-left">
                     <h1 className="font-heading font-bold text-3xl mb-2">{tutor?.result?.first_name} {tutor?.result?.last_name}</h1>
                     <p className="text-xl text-muted-foreground mb-4">{tutor?.result?.subjects?.join(" • ")}</p>

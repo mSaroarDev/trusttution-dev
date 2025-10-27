@@ -8,7 +8,7 @@ export function CardHeader({ className, ...props }) {
   return <div className={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />
 }
 
-export function CardTitle({ className, children, ...props }) {
+export function CardTitle({ children, ...props }) {
   return (
     <div className="flex items-center gap-2" {...props}>
       <div className="w-4 h-4 bg-brand rounded"></div>
