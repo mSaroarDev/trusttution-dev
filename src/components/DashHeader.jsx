@@ -1,4 +1,4 @@
-
+"use client";
 import { HiChevronLeft } from "react-icons/hi";
 import { IoWalletOutline } from "react-icons/io5";
 import UserDropdown from "./UserDropdown";
@@ -32,8 +32,11 @@ const DashHeader = ({ width, toggleSidebar }) => {
 
       <div className="flex items-center gap-x-5">
         <div className="flex items-center gap-2">
-          <IoWalletOutline size={25} />
-          <span className="mt-1">$276</span>
+          <IoWalletOutline size={34} />
+          <div>
+            <p className="text-xs text-gray-500">Wallet</p>
+            <span className="font-medium">$276</span>
+          </div>
         </div>
         <Badge color="danger" content="5" shape="circle">
           <button className="p-2 bg-white rounded-full grid place-items-center">

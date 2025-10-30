@@ -1,6 +1,12 @@
+"use client";
 import React from "react";
-import { Alert, Button } from "@heroui/react";
+import { Alert } from "@heroui/react";
 import { cn } from "@/lib/utils";
+import PrimaryButton from "@/components/ui/PrimaryButton";
+import { IoMdArrowForward } from "react-icons/io";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
+import { CgSpinner } from "react-icons/cg";
 
 const CustomAlert = React.forwardRef(
   (
@@ -19,6 +25,7 @@ const CustomAlert = React.forwardRef(
     return (
       <Alert
         ref={ref}
+        isClosable={true}
         classNames={{
           ...classNames,
           base: cn(
@@ -50,34 +57,27 @@ const CustomAlert = React.forwardRef(
 CustomAlert.displayName = "CustomAlert";
 
 export default function TutorAlert() {
-  const colors = ["success"];
+  const { push } = useRouter();
+  const {user} = useAuth();
 
-  return (
-    <div className="flex flex-col w-full gap-y-6 mb-14">
-      {colors.map((color) => (
-        <CustomAlert
-          key={color}
-          color={color}
-          title="You have successfully created your account! Apply for tutor now."
-        >
-          <div className="flex items-center gap-1 mt-3">
-            <Button
-              className="bg-background text-default-700 font-medium border-1 shadow-small"
-              size="sm"
-              variant="bordered"
-            >
-              Become a Tutor
-            </Button>
-            <Button
-              className="text-default-500 font-medium underline underline-offset-4"
-              size="sm"
-              variant="light"
-            >
-              Maybe later
-            </Button>
-          </div>
-        </CustomAlert>
-      ))}
+  return !user ? <CgSpinner size={20} className="animate-spin" /> : (
+    <div className="flex flex-col w-full gap-y-6">
+      <CustomAlert
+        color="success"
+        title="You have successfully created your account! Apply for tutor now."
+      >
+        <div className="flex items-center gap-1 mt-3">
+          <PrimaryButton
+            className="bg-background text-default-700 font-medium border-1 shadow-small"
+            size="md"
+            variant="bordered"
+            endContent={<IoMdArrowForward size={18} />}
+            onPress={() => push('/dashboard/tutor-profile')}
+          >
+            Become a Tutor
+          </PrimaryButton>
+        </div>
+      </CustomAlert>
     </div>
   );
 }

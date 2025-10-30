@@ -6,8 +6,11 @@ import { BiFilterAlt } from "react-icons/bi";
 import TutorCard from "./TutorCard";
 import { Radio, RadioGroup } from "@heroui/react";
 import { LuUserRoundSearch } from "react-icons/lu";
+import { useGetTutors } from "@/api/tutors/tutors.hooks";
 
 const BrowseTutorsMain = () => {
+  const { data: tutors } = useGetTutors();
+
   return (
     <>
       <div className="flex items-center justify-between">
@@ -68,15 +71,9 @@ const BrowseTutorsMain = () => {
             </div>
           </div>
           <div className="mt-5">
-            <TutorCard />
-            <TutorCard />
-            <TutorCard />
-            <TutorCard />
-            <TutorCard />
-            <TutorCard />
-            <TutorCard />
-            <TutorCard />
-            <TutorCard />
+            {tutors?.data?.map((tutor, index) => (
+              <TutorCard key={index} data={tutor} />
+            ))}
           </div>
         </Card>
       </div>

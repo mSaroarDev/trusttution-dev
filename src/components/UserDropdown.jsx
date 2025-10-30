@@ -1,15 +1,24 @@
+"use client";
+import { showConfirmModal } from "@/helpers/showConfirmModal";
 import { useAuth } from "@/hooks/useAuth";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, User } from "@heroui/react";
 import { useRouter } from "next/navigation";
 
 export default function UserDropdown() {
 
-  const {replace} = useRouter();
-  const {logout, user} = useAuth();
+  const { push } = useRouter();
+  const { logout, isTutor } = useAuth();
 
   const handleLogout = () => {
-    replace("/login");
-    logout();
+    showConfirmModal({
+      title: "Logout?",
+      text: "Are you sure you want to logout?",
+      confirmText: "Yes, Logout",
+      cancelText: "No, cancle.",
+      func: async () => {
+        logout();
+      }
+    })
   };
 
   return (
@@ -23,17 +32,17 @@ export default function UserDropdown() {
               src: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
             }}
             className="transition-transform"
-            // description={`${user?.userType?.split().map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ") || "User"}`}
-            // name={`${user?.firstName || "User"} ${user?.lastName || ""}`}
+          // description={`${user?.userType?.split().map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ") || "User"}`}
+          // name={`${user?.firstName || "User"} ${user?.lastName || ""}`}
           />
         </DropdownTrigger>
         <DropdownMenu aria-label="User Actions" variant="flat">
           <DropdownItem key="profile" className="h-14 gap-2">
-            <p className="font-bold">Signed in as</p>
-            <p className="font-bold">{`@${user?.firstName?.toLowerCase() || "User"}${user?.lastName?.toLowerCase() || ""}`}</p>
+            <p>Signed in as</p>
+            <p className="font-bold">{isTutor ? "Tutor" : "Student"}</p>
           </DropdownItem>
-          <DropdownItem key="settings">My Settings</DropdownItem>
-          <DropdownItem key="team_settings">Team Settings</DropdownItem>
+          <DropdownItem key="settings" onPress={() => push(`/dashboard/settings`)}>My Settings</DropdownItem>
+          {isTutor && <DropdownItem onPress={() => push(`/dashboard/tutor-profile`)} key="team_settings">My Tutor Profile</DropdownItem>}
           <DropdownItem key="analytics">Analytics</DropdownItem>
           <DropdownItem key="system">System</DropdownItem>
           <DropdownItem key="configurations">Configurations</DropdownItem>
