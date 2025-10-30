@@ -26,14 +26,12 @@
     "react-select": "^5.10.2",
     "react-timezone-select": "^3.2.8",
     "react-toastify": "^11.0.5",
-    "styled-components": "^6.1.19",
     "sweetalert2": "^11.26.3",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
-    "@types/styled-components": "^5.1.35",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.37.0",
     "eslint-config-next": "^15.5.3",
